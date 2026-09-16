@@ -533,6 +533,23 @@
   padding: 160px 10%;
   text-align: center;
   background-color: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background-image: url('/stadium-footer.png');
+  background-size: cover;
+  background-position: center calc(50% + 20px);
+  filter: blur(8px) brightness(0.3) saturate(1.2);
+  z-index: -1;
 }
 
 .cta-title {
@@ -575,6 +592,7 @@
 .footer-section {
   border-top: 1px solid #222;
   padding: 40px 10%;
+  background-color: #000;
 }
 
 .footer-content {
