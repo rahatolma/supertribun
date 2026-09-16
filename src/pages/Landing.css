@@ -238,17 +238,23 @@
    MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 32px 24px;
+  }
+
   .hero-title {
-    font-size: 42px;
+    font-size: 36px;
+    margin-bottom: 32px;
   }
   
   .hero-subtitle {
     font-size: 14px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
   
   .hero-content {
     margin-top: 100px;
+    padding: 0 24px;
   }
   
   .btn-glow {
@@ -256,16 +262,16 @@
     font-size: 16px;
   }
 
-  /* Mobil için telefon boyutlarını %45 küçültüyoruz */
+  /* Mobil için telefon boyutlarını küçültüyoruz ve yukarı çekiyoruz */
   .hero-mockup-group {
-    width: 350px;
-    height: 350px;
-    top: 50px;
+    width: 320px;
+    height: 320px;
+    top: 10px;
     left: 0;
   }
   
   .phone-mockup-img {
-    width: 140px; /* 250px'den küçültüldü */
+    width: 120px; /* 140px'den küçültüldü */
   }
 
   .phone-center {

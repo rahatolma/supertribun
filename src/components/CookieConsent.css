@@ -283,19 +283,39 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 768px) {
+  .cookie-banner {
+    padding: 1rem; /* Padding'i iyice kıstık */
+  }
+
   .cookie-banner-content {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.5rem; /* Gap'i çok azalttık */
+  }
+
+  .cookie-banner-text h3 {
+    font-size: 0.95rem; /* Başlık küçüldü */
+    margin: 0 0 0.25rem 0;
+  }
+
+  .cookie-banner-text p {
+    font-size: 0.75rem; /* Yazı boyutu küçüldü */
+    line-height: 1.3;
   }
   
   .cookie-banner-actions {
     width: 100%;
-    justify-content: stretch;
+    /* Mobilde butonları alt alta değil yan yana ve sıkışık diziyoruz */
+    flex-direction: row; 
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   
   .btn {
-    flex: 1;
+    flex: 1 1 auto;
     text-align: center;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.75rem; /* Buton yazıları küçüldü */
   }
   
   .cookie-modal-footer {

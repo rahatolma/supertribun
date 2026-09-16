@@ -12,23 +12,23 @@ export default function Landing() {
 
   return (
     <div className="landing-container">
-      
+
       {/* Navbar */}
       <nav className="navbar">
-          <div className="logo-container" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <img src="/favicon.png" alt="Icon" style={{ height: '32px', borderRadius: '6px' }} />
-            <span style={{ fontSize: '1.4rem', fontWeight: '900', letterSpacing: '-0.04em' }}>
-              <span className="text-accent">Süper</span><span style={{ color: 'white' }}>Tribün</span>
-            </span>
-          </div>
+        <div className="logo-container" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img src="/favicon.png" alt="Icon" style={{ height: '32px', borderRadius: '6px' }} />
+          <span style={{ fontSize: '1.4rem', fontWeight: '900', letterSpacing: '-0.04em' }}>
+            <span className="text-accent">Süper</span><span style={{ color: 'white' }}>Tribün</span>
+          </span>
+        </div>
       </nav>
 
       {/* Hero Section */}
       <section className="hero-section">
         <CinematicStadiumBackground />
-        
+
         <div className="hero-content">
-          <motion.div 
+          <motion.div
             className="hero-text"
             initial="hidden"
             animate="visible"
@@ -38,11 +38,11 @@ export default function Landing() {
           >
             <motion.p variants={fadeUpVariant} className="hero-subtitle">— MAÇTAN ÖNCE</motion.p>
             <motion.h1 variants={fadeUpVariant} className="hero-title">
-              Sözünü söyle.<br/>
+              Sözünü söyle.<br />
               <span className="text-accent" style={{ display: 'inline-block', marginTop: '16px' }}>Tribünde yerini al.</span>
             </motion.h1>
             <motion.div variants={fadeUpVariant}>
-              <button 
+              <button
                 className="btn-glow"
                 onClick={() => document.querySelector('.footer-section').scrollIntoView({ behavior: 'smooth' })}
               >
@@ -51,7 +51,7 @@ export default function Landing() {
             </motion.div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="hero-mockup-group"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export default function Landing() {
 
       {/* Features Section */}
       <section className="features-section">
-        <motion.div 
+        <motion.div
           className="features-header"
           initial="hidden"
           whileInView="visible"
@@ -81,12 +81,12 @@ export default function Landing() {
           variants={fadeUpVariant}
         >
           <p className="section-subtitle">SENİN TRİBÜNÜN</p>
-          <h2 className="section-title">Her maçın<br/>bir hikâyesi var.</h2>
+          <h2 className="section-title">Her maçın<br />bir hikâyesi var.</h2>
         </motion.div>
 
         <div className="bento-grid">
           {/* Card 1: Arena */}
-          <motion.div 
+          <motion.div
             className="bento-card card-light"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export default function Landing() {
           </motion.div>
 
           {/* Card 2: Akış */}
-          <motion.div 
+          <motion.div
             className="bento-card card-dark"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -113,7 +113,7 @@ export default function Landing() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="card-tag text-accent">02 / AKIŞ</div>
-            <h3 className="card-title text-white">Maçın<br/>muhabbetini<br/>yap.</h3>
+            <h3 className="card-title text-white">Maçın<br />muhabbetini<br />yap.</h3>
             <p className="card-desc text-muted">Takımını ara, fikrini paylaş, maçın içinde kal. Tribün sesi skorla bitmez.</p>
             <div className="card-visual-chat">
               <div className="chat-bubble"></div>
@@ -122,7 +122,7 @@ export default function Landing() {
           </motion.div>
 
           {/* Card 3: Sıralama */}
-          <motion.div 
+          <motion.div
             className="bento-card card-yellow"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function Landing() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="card-tag">03 / SIRALAMA</div>
-            <h3 className="card-title">Kim daha iyi<br/>biliyor bak.</h3>
+            <h3 className="card-title">Kim daha iyi<br />biliyor bak.</h3>
             <p className="card-desc">Kullanıcıları, odaları ve kaynakları karşılaştır. Rekabet doğru yerde güzel.</p>
             <div className="card-visual-bars">
               <div className="bar bar-1"></div>
@@ -143,7 +143,7 @@ export default function Landing() {
 
       {/* CTA Section */}
       <section className="cta-section">
-        <motion.div 
+        <motion.div
           className="cta-content"
           initial="hidden"
           whileInView="visible"
@@ -154,24 +154,24 @@ export default function Landing() {
             İlk sözü <span className="text-accent">sen</span> söyle.
           </h1>
           <p className="cta-desc">
-            SüperTribün'de maç başlamadan<br/>
-            tribünde yerini al.<br/>
+            SüperTribün'de maç başlamadan<br />
+            tribünde yerini al.<br />
             Tahminini kilitle, topluluğun nabzını tut.
           </p>
-          
+
           <div className="store-buttons">
-              <button 
-                className="btn-store flex-1"
-                onClick={() => track('app_store_click', { platform: 'ios', location: 'hero' })}
-              >
-                <Apple size={20} /> App Store
-              </button>
-              <button 
-                className="btn-store flex-1"
-                onClick={() => track('play_store_click', { platform: 'android', location: 'hero' })}
-              >
-                <Play size={20} /> Google Play
-              </button>
+            <button
+              className="btn-store flex-1"
+              onClick={() => track('app_store_click', { platform: 'ios', location: 'hero' })}
+            >
+              <Apple size={20} /> App Store
+            </button>
+            <button
+              className="btn-store flex-1"
+              onClick={() => track('play_store_click', { platform: 'android', location: 'hero' })}
+            >
+              <Play size={20} /> Google Play
+            </button>
           </div>
         </motion.div>
       </section>
@@ -185,11 +185,11 @@ export default function Landing() {
               <span className="text-accent">Süper</span><span style={{ color: 'white' }}>Tribün</span>
             </span>
           </div>
-          
+
           <div className="footer-links">
             <a href="mailto:destek@supertribun.com" className="text-muted">destek@supertribun.com</a>
           </div>
-          
+
           <button className="btn-scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             Yukarı çık ↑
           </button>
