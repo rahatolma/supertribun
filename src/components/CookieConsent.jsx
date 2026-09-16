@@ -5,7 +5,7 @@ import './CookieConsent.css';
 const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  
+
   // Accordion state
   const [expandedSection, setExpandedSection] = useState(null);
 
@@ -75,15 +75,15 @@ const CookieConsent = () => {
         <div className="cookie-banner">
           <div className="cookie-banner-content">
             <div className="cookie-banner-text">
-              <h3>We value your privacy</h3>
+              <h3>Gizliliğinize önem veriyoruz</h3>
               <p>
-                We use cookies to enhance your browsing experience, serve personalised ads or content, and analyse our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="#">Cookie Policy</a>
+                Size daha iyi bir deneyim sunmak, trafiği analiz etmek ve kişiselleştirilmiş içerikler göstermek için çerezleri kullanıyoruz. "Tümünü Kabul Et" butonuna tıklayarak çerez kullanımımıza onay vermiş olursunuz. <a href="#">Çerez Politikası</a>
               </p>
             </div>
             <div className="cookie-banner-actions">
-              <button className="btn btn-outline" onClick={() => setShowModal(true)}>Customise</button>
-              <button className="btn btn-primary" onClick={handleRejectAll}>Reject All</button>
-              <button className="btn btn-primary" onClick={handleAcceptAll}>Accept All</button>
+              <button className="btn btn-outline" onClick={() => setShowModal(true)}>Özelleştir</button>
+              <button className="btn btn-primary" onClick={handleRejectAll}>Tümünü Reddet</button>
+              <button className="btn btn-primary" onClick={handleAcceptAll}>Tümünü Kabul Et</button>
             </div>
           </div>
         </div>
@@ -93,17 +93,17 @@ const CookieConsent = () => {
         <div className="cookie-modal-overlay">
           <div className="cookie-modal">
             <div className="cookie-modal-header">
-              <h2>Customise Consent Preferences</h2>
+              <h2>Çerez Tercihlerini Özelleştir</h2>
               <button className="close-btn" onClick={() => setShowModal(false)}>
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="cookie-modal-body">
               <p className="modal-intro">
-                We use cookies to help you navigate efficiently and perform certain functions. You will find detailed information about all cookies under each consent category below.
+                Web sitemizde gezinmenizi kolaylaştırmak ve temel işlevleri sağlamak için çerezler kullanıyoruz. Her izin kategorisi altındaki çerezler hakkında detaylı bilgiyi aşağıda bulabilirsiniz.
                 <br /><br />
-                The cookies that are categorised as "Necessary" are stored on your browser as they are essential for enabling the basic functionalities of the site. ... <a href="#">Show more</a>
+                "Zorunlu" olarak kategorize edilen çerezler, sitenin temel işlevlerini sağlamak için tarayıcınızda saklanır. ... <a href="#">Daha fazla göster</a>
               </p>
 
               <div className="cookie-sections">
@@ -112,13 +112,13 @@ const CookieConsent = () => {
                   <div className="cookie-section-header" onClick={() => toggleSection('necessary')}>
                     <div className="cookie-section-title">
                       {expandedSection === 'necessary' ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                      <h4>Necessary</h4>
+                      <h4>Zorunlu</h4>
                     </div>
-                    <span className="always-active">Always Active</span>
+                    <span className="always-active">Her Zaman Aktif</span>
                   </div>
                   {expandedSection === 'necessary' && (
                     <div className="cookie-section-content">
-                      <p>Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.</p>
+                      <p>Zorunlu çerezler, güvenli oturum açma veya izin tercihlerinizi ayarlama gibi temel işlevleri etkinleştirmek için gereklidir. Bu çerezler kişisel olarak tanımlanabilir hiçbir veri saklamaz.</p>
                     </div>
                   )}
                 </div>
@@ -128,11 +128,11 @@ const CookieConsent = () => {
                   <div className="cookie-section-header" onClick={() => toggleSection('functional')}>
                     <div className="cookie-section-title">
                       {expandedSection === 'functional' ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                      <h4>Functional</h4>
+                      <h4>İşlevsel</h4>
                     </div>
                     <label className="toggle-switch" onClick={e => e.stopPropagation()}>
-                      <input 
-                        type="checkbox" 
+                      <input
+                        type="checkbox"
                         checked={preferences.functional}
                         onChange={() => togglePreference('functional')}
                       />
@@ -141,7 +141,7 @@ const CookieConsent = () => {
                   </div>
                   {expandedSection === 'functional' && (
                     <div className="cookie-section-content">
-                      <p>Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.</p>
+                      <p>İşlevsel çerezler, sosyal medya platformlarında içerik paylaşımı, geri bildirim toplama ve diğer üçüncü taraf özelliklerinin çalışmasına yardımcı olur.</p>
                     </div>
                   )}
                 </div>
@@ -151,11 +151,11 @@ const CookieConsent = () => {
                   <div className="cookie-section-header" onClick={() => toggleSection('analytics')}>
                     <div className="cookie-section-title">
                       {expandedSection === 'analytics' ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                      <h4>Analytics</h4>
+                      <h4>Analitik</h4>
                     </div>
                     <label className="toggle-switch" onClick={e => e.stopPropagation()}>
-                      <input 
-                        type="checkbox" 
+                      <input
+                        type="checkbox"
                         checked={preferences.analytics}
                         onChange={() => togglePreference('analytics')}
                       />
@@ -164,7 +164,7 @@ const CookieConsent = () => {
                   </div>
                   {expandedSection === 'analytics' && (
                     <div className="cookie-section-content">
-                      <p>Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.</p>
+                      <p>Analitik çerezler, ziyaretçilerin web sitesiyle nasıl etkileşime girdiğini anlamak için kullanılır. Bu çerezler ziyaretçi sayısı, hemen çıkma oranı, trafik kaynağı gibi metrikler hakkında bilgi sağlar.</p>
                     </div>
                   )}
                 </div>
@@ -174,11 +174,11 @@ const CookieConsent = () => {
                   <div className="cookie-section-header" onClick={() => toggleSection('performance')}>
                     <div className="cookie-section-title">
                       {expandedSection === 'performance' ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                      <h4>Performance</h4>
+                      <h4>Performans</h4>
                     </div>
                     <label className="toggle-switch" onClick={e => e.stopPropagation()}>
-                      <input 
-                        type="checkbox" 
+                      <input
+                        type="checkbox"
                         checked={preferences.performance}
                         onChange={() => togglePreference('performance')}
                       />
@@ -187,7 +187,7 @@ const CookieConsent = () => {
                   </div>
                   {expandedSection === 'performance' && (
                     <div className="cookie-section-content">
-                      <p>Performance cookies are used to understand and analyse the key performance indexes of the website which helps in delivering a better user experience for the visitors.</p>
+                      <p>Performans çerezleri, ziyaretçilere daha iyi bir kullanıcı deneyimi sunmaya yardımcı olan temel performans metriklerini anlamak ve analiz etmek için kullanılır.</p>
                     </div>
                   )}
                 </div>
@@ -195,9 +195,9 @@ const CookieConsent = () => {
             </div>
 
             <div className="cookie-modal-footer">
-              <button className="btn btn-primary" onClick={handleRejectAll}>Reject All</button>
-              <button className="btn btn-primary flex-1" onClick={handleSavePreferences}>Save My Preferences</button>
-              <button className="btn btn-primary" onClick={handleAcceptAll}>Accept All</button>
+              <button className="btn btn-primary" onClick={handleRejectAll}>Tümünü Reddet</button>
+              <button className="btn btn-primary flex-1" onClick={handleSavePreferences}>Tercihlerimi Kaydet</button>
+              <button className="btn btn-primary" onClick={handleAcceptAll}>Tümünü Kabul Et</button>
             </div>
           </div>
         </div>
