@@ -1,0 +1,627 @@
+.landing-container {
+  width: 100%;
+}
+
+.navbar {
+  padding: 32px 64px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-logo {
+  height: 48px;
+  width: auto;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+}
+
+/* Animated Background */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bg-grid {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(1000px) rotateX(60deg);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(23, 100, 39, 0.6) 0%, transparent 70%);
+  top: 10%;
+  left: 10%;
+}
+
+.orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.15) 0%, transparent 70%);
+  bottom: 0%;
+  right: -10%;
+}
+
+.orb-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 46, 26, 0.6) 0%, transparent 70%);
+  top: 40%;
+  left: 40%;
+}
+
+.hero-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8% 0 12%;
+  z-index: 10;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-subtitle {
+  color: var(--color-accent);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: 6vw;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  margin-bottom: 48px;
+  color: white;
+}
+
+.btn-glow {
+  background-color: var(--color-accent);
+  color: var(--bg-dark);
+  border: none;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 700;
+  /* GÜNCELLEME: Kullanıcı isteğiyle yuvarlaklık azaltılıp dikdörtgen yapıldı */
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 30px rgba(255, 184, 0, 0.2);
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(255, 184, 0, 0.4);
+}
+
+.hero-mockup-group {
+  position: relative;
+  width: 750px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* GÜNCELLEME: margin-bottom yerine top kullanarak layoutun çökmesini (marquee'nin kaybolmasını) engelledik */
+  top: 150px;
+  left: 5%;
+}
+
+.phone-mockup-img {
+  position: absolute;
+  width: 320px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.4s, filter 0.4s ease;
+  cursor: pointer;
+}
+
+/* --- Başlangıç Durumları (Hepsi Aşağıda Gizli) --- */
+.phone-center {
+  z-index: 3;
+  /* GÜNCELLEME: Kullanıcı isteğiyle ortadaki %10 yukarı alındı (45 -> 35) */
+  transform: scale(1) translateY(35%);
+  /* GÜNCELLEME: Ortadaki de başlangıçta karanlık/flu olacak */
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8)) brightness(0.6);
+}
+
+.phone-left {
+  z-index: 2;
+  /* Sola ve daha da aşağıya */
+  transform: scale(0.9) translateX(-55%) translateY(50%);
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8)) brightness(0.6);
+}
+
+.phone-right {
+  z-index: 1;
+  /* Sağa ve daha da aşağıya */
+  transform: scale(0.9) translateX(55%) translateY(50%);
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8)) brightness(0.6);
+}
+
+/* --- Hover (Çok Hafif Yukarı Çıkma - Öne Çıkarma İptal) --- */
+.phone-center:hover {
+  /* Z-index değiştirmiyoruz (öne çıkmıyor), sadece çok hafif yukarı kayıyor */
+  /* GÜNCELLEME: Başlangıç 35% olduğu için hover 28% oldu */
+  transform: scale(1.02) translateY(28%);
+  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 1)) brightness(1);
+}
+
+.phone-left:hover {
+  /* Z-index değiştirmiyoruz (arkada kalmaya devam ediyor), çok hafif yukarı kalkıyor */
+  transform: scale(0.92) translateX(-55%) translateY(43%);
+  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 1)) brightness(0.8);
+}
+
+.phone-right:hover {
+  /* Z-index değiştirmiyoruz (arkada kalmaya devam ediyor), çok hafif yukarı kalkıyor */
+  transform: scale(0.92) translateX(55%) translateY(43%);
+  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 1)) brightness(0.8);
+}
+
+/* Marquee */
+.marquee-container {
+  background-color: #151515;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  /* GÜNCELLEME: Telefonların altında kaybolmaması için z-index 20 yapıldı */
+  z-index: 20; 
+  /* GÜNCELLEME: Altındaki features-section margin-top: -40px ile yukarı kayıp marquee'yi 
+     ezmesini engellemek için altına 40px tampon boşluk eklendi */
+  margin-bottom: 40px;
+}
+
+.marquee-text {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #999;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* Döngünün kusursuz olması için sağ-sol margin/padding tamamen kaldırıldı.
+     Boşluklar JSX içindeki span (diamond) marginleri ile yönetiliyor. */
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 42px;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  
+  .hero-content {
+    margin-top: 100px;
+  }
+  
+  .btn-glow {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* Mobil için telefon boyutlarını %45 küçültüyoruz */
+  .hero-mockup-group {
+    width: 350px;
+    height: 350px;
+    top: 50px;
+    left: 0;
+  }
+  
+  .phone-mockup-img {
+    width: 140px; /* 250px'den küçültüldü */
+  }
+
+  .phone-center {
+    transform: scale(1) translateY(35%);
+  }
+
+  .phone-left {
+    transform: scale(0.9) translateX(-55%) translateY(50%);
+  }
+
+  .phone-right {
+    transform: scale(0.9) translateX(55%) translateY(50%);
+  }
+
+  /* Hover animasyonlarını da mobil oranlara göre GÜNCELLİYORUZ. */
+  .phone-center:hover {
+    transform: scale(1.05) translateY(28%);
+  }
+
+  .hero-mockup-group:has(.phone-center:hover) .phone-left {
+    transform: scale(0.85) translateX(-65%) translateY(50%);
+  }
+  
+  .hero-mockup-group:has(.phone-center:hover) .phone-right {
+    transform: scale(0.85) translateX(65%) translateY(50%);
+  }
+
+  .phone-left:hover {
+    transform: scale(0.95) translateX(-55%) translateY(43%);
+  }
+
+  .hero-mockup-group:has(.phone-left:hover) .phone-center {
+    transform: scale(1) translateY(35%);
+  }
+
+  .phone-right:hover {
+    transform: scale(0.95) translateX(55%) translateY(43%);
+  }
+
+  .hero-mockup-group:has(.phone-right:hover) .phone-center {
+    transform: scale(1) translateY(35%);
+  }
+
+  /* Features (Bento) alanı mobilde alt alta dizilmeli */
+  .features-section {
+    padding: 60px 20px;
+    margin-top: -20px; /* Eskiden -40px idi */
+  }
+  
+  .section-title {
+    font-size: 32px;
+  }
+
+  .bento-card {
+    padding: 24px; /* Mobilde kart iç boşluklarını daraltıyoruz */
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr; /* 3 sütun yerine tek sütun */
+    gap: 16px;
+  }
+
+  .bento-card.col-span-2 {
+    grid-column: span 1; /* Mobilde yatayda uzamasını iptal ediyoruz */
+  }
+
+  /* Footer alanı mobilde alt alta */
+  .footer-content {
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center; /* Mobilde ortalıyoruz */
+    text-align: center;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .store-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .store-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Features Section */
+.features-section {
+  background-color: var(--bg-light);
+  color: var(--color-text-light);
+  padding: 120px 10%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  margin-top: -40px;
+  z-index: 20;
+  position: relative;
+}
+
+.features-header {
+  margin-bottom: 80px;
+}
+
+.section-subtitle {
+  color: #a0a0a0;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 64px;
+  letter-spacing: -0.04em;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.bento-card {
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+  transition: transform 0.4s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-8px);
+}
+
+.card-light {
+  background-color: #F4F2EE;
+  grid-column: span 1;
+}
+
+.card-dark {
+  background-color: #111111;
+  color: white;
+}
+
+.card-yellow {
+  background-color: #FFF2CD;
+}
+
+.card-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+.card-light .card-tag { color: #A08C6C; }
+.card-yellow .card-tag { color: #A07D2C; }
+
+.card-title {
+  font-size: 36px;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.card-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+  max-width: 90%;
+}
+
+.text-white { color: white; }
+.text-muted { color: #888; }
+
+/* Abstract visuals for cards */
+.card-visual-circles {
+  margin-top: auto;
+  position: relative;
+  height: 150px;
+}
+
+.circle-1, .circle-2 {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.circle-1 {
+  width: 200px; height: 200px;
+  bottom: -100px; right: -50px;
+  border-width: 40px;
+  border-color: #E8E5DF;
+}
+
+.circle-2 {
+  width: 120px; height: 120px;
+  bottom: -60px; right: -10px;
+  border-width: 2px;
+  border-color: #D3D0C9;
+}
+
+.dot {
+  width: 16px; height: 16px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  position: absolute;
+  top: 10px; left: 10px;
+}
+
+.card-visual-chat {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-bubble {
+  height: 48px;
+  background-color: #222;
+  border-radius: 24px;
+  width: 80%;
+}
+
+.chat-bubble.right {
+  align-self: flex-end;
+  background-color: #333;
+  width: 60%;
+}
+
+.card-visual-bars {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 120px;
+}
+
+.bar {
+  background-color: var(--color-accent);
+  border-radius: 8px 8px 0 0;
+  width: 40px;
+  opacity: 0.8;
+}
+
+.bar-1 { height: 40%; }
+.bar-2 { height: 100%; opacity: 1; }
+.bar-3 { height: 60%; }
+
+/* CTA Section */
+.cta-section {
+  padding: 160px 10%;
+  text-align: center;
+  background-color: var(--bg-dark);
+}
+
+.cta-title {
+  font-size: 80px;
+  margin-bottom: 32px;
+}
+
+.cta-desc {
+  font-size: 20px;
+  color: #888;
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+.store-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-store {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: 40px;
+  border: 1px solid #333;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-store:hover {
+  background-color: #222;
+  border-color: #555;
+}
+
+/* Footer */
+.footer-section {
+  border-top: 1px solid #222;
+  padding: 40px 10%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-links a {
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.btn-scroll-top {
+  color: #666;
+  font-size: 14px;
+}
+
+.btn-scroll-top:hover {
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: left;
+    padding-top: 120px;
+  }
+  .hero-text {
+    align-self: flex-start;
+  }
+  .hero-mockup {
+    margin-top: 60px;
+    right: auto;
+    transform: none;
+  }
+  .mockup-phone {
+    position: relative;
+    transform: none;
+    margin: 0 auto;
+  }
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-title {
+    font-size: 48px;
+  }
+  .cta-title {
+    font-size: 56px;
+  }
+}

@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --font-family: 'Inter', sans-serif;
+  
+  --bg-dark: #0F0F0F;
+  --bg-light: #FAFAFA;
+  --bg-card-dark: #1A1A1A;
+  --bg-card-light: #F0F0F0;
+  
+  --color-accent: #FFB800;
+  --color-text-dark: #FFFFFF;
+  --color-text-light: #111111;
+  --color-text-muted-dark: #888888;
+  --color-text-muted-light: #666666;
+  
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-family);
+  background-color: var(--bg-dark);
+  color: var(--color-text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Typography Enhancements */
+h1, h2, h3 {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.cursive-accent {
+  font-family: 'Georgia', serif; /* Simulating the cursive 'sen' */
+  font-style: italic;
+  color: var(--color-accent);
+  font-weight: 500;
+}
