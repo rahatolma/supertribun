@@ -161,13 +161,13 @@ export default function Landing() {
 
           <div className="store-buttons">
             <button
-              className="btn-store flex-1"
+              className="btn-store"
               onClick={() => track('app_store_click', { platform: 'ios', location: 'hero' })}
             >
               <Apple size={20} /> App Store
             </button>
             <button
-              className="btn-store flex-1"
+              className="btn-store"
               onClick={() => track('play_store_click', { platform: 'android', location: 'hero' })}
             >
               <Play size={20} /> Google Play
