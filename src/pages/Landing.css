@@ -550,6 +550,8 @@
   background-position: center calc(50% + 20px);
   filter: blur(8px) brightness(0.3) saturate(1.2);
   z-index: -1;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 .cta-title {

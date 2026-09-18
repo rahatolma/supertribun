@@ -44,7 +44,10 @@ export default function Landing() {
             <motion.div variants={fadeUpVariant}>
               <button
                 className="btn-glow"
-                onClick={() => document.querySelector('.footer-section').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  track('discover_click', { location: 'hero' });
+                  document.querySelector('.footer-section').scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 SüperTribün'ü keşfet <ArrowRight size={20} />
               </button>
