@@ -1,10 +1,17 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Apple, Play } from 'lucide-react';
 import CinematicStadiumBackground from '../components/CinematicStadiumBackground';
-import { track } from '@vercel/analytics';
+import { Link } from 'react-router-dom';
+import { trackSiteEvent } from '../privacy/measurement';
 import './Landing.css';
 
-export default function Landing() {
+export default function Landing({ onOpenPreferences }) {
+  const [storeNotice, setStoreNotice] = useState('');
+  const showStoreNotice = (platform) => {
+    trackSiteEvent(platform === 'ios' ? 'app_store_click' : 'play_store_click');
+    setStoreNotice(`${platform === 'ios' ? 'App Store' : 'Google Play'} bağlantımız yakında burada. Şu anda indirme başlatılmadı.`);
+  };
   const fadeUpVariant = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
@@ -45,8 +52,8 @@ export default function Landing() {
               <button
                 className="btn-glow"
                 onClick={() => {
-                  track('discover_click', { location: 'hero' });
-                  document.querySelector('.footer-section').scrollIntoView({ behavior: 'smooth' });
+                  trackSiteEvent('discover_click');
+                  document.getElementById('magaza')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
                 }}
               >
                 SüperTribün'ü keşfet <ArrowRight size={20} />
@@ -68,8 +75,8 @@ export default function Landing() {
 
         <div className="marquee-container">
           <div className="animate-marquee">
-            <span className="marquee-text">MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> KİM DAHA İYİ BİLİYOR BAK <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
-            <span className="marquee-text">MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> KİM DAHA İYİ BİLİYOR BAK <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
+            <span className="marquee-text">MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇGÜDÜNE GÜVEN <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DOSTLARINA MEYDAN OKU <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> HEYECANA ORTAK OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TRİBÜNÜN SESİ OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
+            <span className="marquee-text">MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇGÜDÜNE GÜVEN <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DOSTLARINA MEYDAN OKU <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> HEYECANA ORTAK OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TRİBÜNÜN SESİ OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
           </div>
         </div>
       </section>
@@ -145,7 +152,7 @@ export default function Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <section className="cta-section" id="magaza">
         <motion.div
           className="cta-content"
           initial="hidden"
@@ -165,17 +172,18 @@ export default function Landing() {
           <div className="store-buttons">
             <button
               className="btn-store"
-              onClick={() => track('app_store_click', { platform: 'ios', location: 'hero' })}
+              onClick={() => showStoreNotice('ios')}
             >
-              <Apple size={20} /> App Store
+              <Apple size={20} aria-hidden="true" /> App Store <span className="store-soon">Yakında</span>
             </button>
             <button
               className="btn-store"
-              onClick={() => track('play_store_click', { platform: 'android', location: 'hero' })}
+              onClick={() => showStoreNotice('android')}
             >
-              <Play size={20} /> Google Play
+              <Play size={20} aria-hidden="true" /> Google Play <span className="store-soon">Yakında</span>
             </button>
           </div>
+          <p className="store-notice" role="status">{storeNotice}</p>
         </motion.div>
       </section>
 
@@ -197,6 +205,11 @@ export default function Landing() {
             Yukarı çık ↑
           </button>
         </div>
+        <nav className="footer-legal" aria-label="Gizlilik ve site tercihleri">
+          <Link to="/gizlilik">Gizlilik ve Aydınlatma</Link>
+          <Link to="/cerez-politikasi">Çerez Politikası</Link>
+          <button onClick={onOpenPreferences}>Çerez tercihleri</button>
+        </nav>
       </footer>
     </div>
   );

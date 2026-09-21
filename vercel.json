@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/gizlilik", "destination": "/index.html" },
+    { "source": "/cerez-politikasi", "destination": "/index.html" }
+  ]
+}

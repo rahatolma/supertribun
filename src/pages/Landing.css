@@ -340,6 +340,7 @@
 
   /* Footer alanı mobilde alt alta */
   .footer-content {
+    display: flex;
     flex-direction: column;
     gap: 40px;
     padding-bottom: 20px;
@@ -593,14 +594,23 @@
 /* Footer */
 .footer-section {
   border-top: 1px solid #222;
-  padding: 40px 10%;
+  padding: 40px 10% 200px 10%;
   background-color: #000;
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+}
+.footer-content > .logo-container {
+  justify-self: start;
+}
+.footer-content > .footer-links {
+  justify-self: center;
+}
+.footer-content > .btn-scroll-top {
+  justify-self: end;
 }
 
 .footer-links a {
@@ -620,6 +630,15 @@
 .btn-scroll-top:hover {
   color: white;
 }
+
+.btn-store { justify-content: center; white-space: nowrap; }
+.btn-store svg { flex-shrink: 0; }
+.store-soon { font-size: 12px; color: #ffcc4d; border: 1px solid #665326; border-radius: 20px; padding: 4px 8px; }
+.store-notice { min-height: 48px; margin-top: 20px; font-size: 14px; color: #ddd; line-height: 1.5; }
+.footer-legal { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #282828; }
+.footer-legal a, .footer-legal button { display: inline-flex; align-items: center; min-height: 44px; color: #b8b8b8; font-size: 14px; }
+.footer-legal a:hover, .footer-legal button:hover { color: #ffcc4d; }
+@media (max-width: 600px) { .btn-store { padding: 16px; } }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
