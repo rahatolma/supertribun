@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Landing from './pages/Landing';
 import CookieConsent from './components/CookieConsent';
 import LegalPage from './pages/LegalPage';
+import LaunchGate from './pages/LaunchGate';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { consentStore, watchConsent } from './privacy/consent';
@@ -30,7 +31,8 @@ function Site() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Landing onOpenPreferences={openPreferences} />} />
+        <Route path="/" element={<LaunchGate />} />
+        <Route path="/onizleme" element={<Landing onOpenPreferences={openPreferences} />} />
         <Route path="/gizlilik" element={<LegalPage kind="privacy" onOpenPreferences={openPreferences} />} />
         <Route path="/cerez-politikasi" element={<LegalPage kind="cookies" onOpenPreferences={openPreferences} />} />
         <Route path="/hesap-silme" element={<LegalPage kind="accountDeletion" onOpenPreferences={openPreferences} />} />

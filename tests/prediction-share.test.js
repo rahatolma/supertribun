@@ -30,3 +30,13 @@ test('Vercel routes expose one dynamic share page, OG image and Apple associatio
  assert.match(vercel,/"\/t\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/\/t\/\[id\]/);assert.match(image,/ImageResponse/);
  assert.match(aasa,/NX934R23UD\.com\.supertribun\.app/);assert.match(aasa,/"\/t\/\*"/);
 });
+
+test('prelaunch routes keep the public home gated without removing the private preview',async()=>{
+ const root=new URL('../',import.meta.url);
+ const [app,gate,robots,vercel]=await Promise.all(['src/App.jsx','src/pages/LaunchGate.jsx','public/robots.txt','vercel.json'].map(file=>readFile(new URL(file,root),'utf8')));
+ assert.match(app,/path="\/" element={<LaunchGate/);
+ assert.match(app,/path="\/onizleme" element={<Landing/);
+ assert.match(gate,/Tribündeki yerini hazırlıyoruz/);
+ assert.match(robots,/Disallow: \/$/m);
+ assert.match(vercel,/"\/onizleme"/);
+});
