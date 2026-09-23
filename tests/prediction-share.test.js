@@ -27,7 +27,7 @@ test('server share reader uses the public RPC and validates its response',async 
 test('Vercel routes expose one dynamic share page, OG image and Apple association',async()=>{
  const root=new URL('../',import.meta.url);
  const [vercel,page,image,aasa]=await Promise.all(['vercel.json','api/share.js','api/share-image.js','public/.well-known/apple-app-site-association'].map(file=>readFile(new URL(file,root),'utf8')));
- assert.match(vercel,/"\/t\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/\/t\/\[id\]/);assert.match(page,/og:image:height" content="630/);assert.match(page,/aspect-ratio:1200\/630/);assert.doesNotMatch(page,/cookieConsent|Çerez tercihleri|mağaza bağlantıları yakında/i);assert.match(image,/ImageResponse/);assert.match(image,/width:1200,height:630/);assert.match(image,/data:image\/png;base64/);assert.doesNotMatch(image,/runtime:'edge'|headers:\{'Cache-Control'/);
+ assert.match(vercel,/"\/t\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/\/t\/\[id\]/);assert.match(page,/og:image:height" content="630/);assert.match(page,/aspect-ratio:1200\/630/);assert.doesNotMatch(page,/cookieConsent|Çerez tercihleri|mağaza bağlantıları yakında/i);assert.match(image,/sharp\(Buffer\.from/);assert.match(image,/width="1200" height="630"/);assert.match(image,/data:image\/png;base64/);assert.doesNotMatch(image,/ImageResponse|runtime:'edge'/);
  assert.match(aasa,/NX934R23UD\.com\.supertribun\.app/);assert.match(aasa,/"\/t\/\*"/);
 });
 
