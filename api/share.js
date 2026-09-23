@@ -7,7 +7,7 @@ export default async function handler(request,response){
   const id=shareId(request.query.id);
   if(!id)return response.status(404).send('Paylaşım bulunamadı.');
   try{
-    const data=await fetchShareData(id),origin='https://supertribun.com',canonical=`${origin}/t/${id}`,image=`${origin}/api/share-image?id=${id}&v=2`;
+    const data=await fetchShareData(id),origin='https://supertribun.com',canonical=`${origin}/t/${id}`,image=`${origin}/api/share-image?id=${id}&v=3`;
     const title=`${data.home_name} – ${data.away_name} | Tahminini yap`;
     const description=`Kilitli SüperTribün tahminini gör. Hadi, sen de skor tahminini yap.`;
     response.setHeader('Content-Type','text/html; charset=utf-8');
