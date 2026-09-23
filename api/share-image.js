@@ -62,7 +62,7 @@ function renderSvg(data,logo){
 
 export default async function handler(request){
   try{
-    const url=new URL(request.url),id=shareId(url.searchParams.get('id'));
+    const id=shareId(request.query?.id??new URL(request.url,'https://supertribun.com').searchParams.get('id'));
     if(!id)return new Response('Not found',{status:404});
     const [data,logo]=await Promise.all([fetchShareData(id),logoPromise]);
     const png=await sharp(Buffer.from(renderSvg(data,logo))).png().toBuffer();
