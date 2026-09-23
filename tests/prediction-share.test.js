@@ -38,7 +38,8 @@ test('prelaunch routes keep the public home gated without removing the private p
  assert.match(app,/path="\/onizleme" element={<Landing/);
  assert.match(gate,/ÇOK YAKINDA/);
  assert.doesNotMatch(gate,/Gizlilik|Çerezler|İletişim|SüperTribün/);
- assert.match(app,/!isLaunchGate && <CookieConsent/);
+ assert.match(app,/!isPrivateUtility && <CookieConsent/);
+ assert.match(app,/pathname === '\/auth\/challenge'/);
  assert.match(robots,/Disallow: \/$/m);
  assert.match(vercel,/"\/onizleme"/);
 });

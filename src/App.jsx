@@ -4,6 +4,7 @@ import Landing from './pages/Landing';
 import CookieConsent from './components/CookieConsent';
 import LegalPage from './pages/LegalPage';
 import LaunchGate from './pages/LaunchGate';
+import TurnstileChallenge from './pages/TurnstileChallenge';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { consentStore, watchConsent } from './privacy/consent';
@@ -28,20 +29,21 @@ function Site() {
     loaded.current = next;
   }, [consent]);
   const openPreferences = () => setPreferencesOpen(true);
-  const isLaunchGate = pathname === '/';
+  const isPrivateUtility = pathname === '/' || pathname === '/auth/challenge';
   return (
     <>
       <Routes>
         <Route path="/" element={<LaunchGate />} />
+        <Route path="/auth/challenge" element={<TurnstileChallenge />} />
         <Route path="/onizleme" element={<Landing onOpenPreferences={openPreferences} />} />
         <Route path="/gizlilik" element={<LegalPage kind="privacy" onOpenPreferences={openPreferences} />} />
         <Route path="/cerez-politikasi" element={<LegalPage kind="cookies" onOpenPreferences={openPreferences} />} />
         <Route path="/hesap-silme" element={<LegalPage kind="accountDeletion" onOpenPreferences={openPreferences} />} />
         <Route path="*" element={<LegalPage kind="missing" onOpenPreferences={openPreferences} />} />
       </Routes>
-      {!isLaunchGate && <CookieConsent consent={consent} open={preferencesOpen} onOpen={openPreferences} onClose={() => setPreferencesOpen(false)} />}
-      {!isLaunchGate && measurementEnabled && consent?.analytics && <Analytics beforeSend={beforeAnalytics} />}
-      {!isLaunchGate && measurementEnabled && consent?.performance && <SpeedInsights beforeSend={beforePerformance} />}
+      {!isPrivateUtility && <CookieConsent consent={consent} open={preferencesOpen} onOpen={openPreferences} onClose={() => setPreferencesOpen(false)} />}
+      {!isPrivateUtility && measurementEnabled && consent?.analytics && <Analytics beforeSend={beforeAnalytics} />}
+      {!isPrivateUtility && measurementEnabled && consent?.performance && <SpeedInsights beforeSend={beforePerformance} />}
     </>
   );
 }

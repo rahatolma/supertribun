@@ -1,0 +1,8 @@
+.turnstile-page{min-height:100vh;display:grid;place-items:center;padding:24px;background:#f7f4ef;color:#181716}
+.turnstile-card{width:min(100%,420px);padding:28px;border:1px solid #ded6cb;border-radius:24px;background:#fff;box-shadow:0 18px 60px rgba(34,28,21,.09);text-align:center}
+.turnstile-brand{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:28px;font-size:21px}
+.turnstile-brand span{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#181716;color:#ffb000;font-size:24px;font-weight:900}
+.turnstile-card h1{font-size:26px;letter-spacing:-.03em}.turnstile-card>p{margin:10px auto 22px;color:#746d65;font-size:14px;line-height:1.55}
+.turnstile-widget{min-height:70px;display:flex;align-items:center;justify-content:center;margin-top:22px}
+.turnstile-card .turnstile-error{color:#b4212b}.turnstile-card .turnstile-success{color:#247a39;font-weight:700}
+@media(max-width:360px){.turnstile-page{padding:14px}.turnstile-card{padding:22px 14px}.turnstile-card h1{font-size:23px}}
