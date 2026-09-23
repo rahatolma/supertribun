@@ -66,7 +66,9 @@ export default function TurnstileChallenge() {
 
   return <main className="turnstile-page">
     <section className="turnstile-card" aria-live="polite">
-      <div className="turnstile-brand"><span aria-hidden="true">S</span><strong>SüperTribün</strong></div>
+      <div className="turnstile-brand">
+        <img src="/logo.png" alt="SüperTribün" />
+      </div>
       <h1>Güvenlik kontrolü</h1>
       <p>Hesabını botlardan korumak için bu kısa kontrolü tamamla.</p>
       {request && <div ref={host} className="turnstile-widget"/>}
