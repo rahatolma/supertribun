@@ -26,8 +26,8 @@ test('server share reader uses the public RPC and validates its response',async 
 
 test('Vercel routes expose one dynamic share page, OG image and Apple association',async()=>{
  const root=new URL('../',import.meta.url);
- const [vercel,page,image,aasa]=await Promise.all(['vercel.json','api/share.js','api/share-image.jsx','public/.well-known/apple-app-site-association'].map(file=>readFile(new URL(file,root),'utf8')));
- assert.match(vercel,/"\/t\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/\/t\/\[id\]/);assert.match(image,/ImageResponse/);
+ const [vercel,page,image,aasa]=await Promise.all(['vercel.json','api/share.js','api/share-image.js','public/.well-known/apple-app-site-association'].map(file=>readFile(new URL(file,root),'utf8')));
+ assert.match(vercel,/"\/t\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/\/t\/\[id\]/);assert.doesNotMatch(page,/cookieConsent|Çerez tercihleri|mağaza bağlantıları yakında/i);assert.match(image,/ImageResponse/);
  assert.match(aasa,/NX934R23UD\.com\.supertribun\.app/);assert.match(aasa,/"\/t\/\*"/);
 });
 
