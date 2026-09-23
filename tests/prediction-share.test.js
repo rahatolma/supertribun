@@ -36,7 +36,9 @@ test('prelaunch routes keep the public home gated without removing the private p
  const [app,gate,robots,vercel]=await Promise.all(['src/App.jsx','src/pages/LaunchGate.jsx','public/robots.txt','vercel.json'].map(file=>readFile(new URL(file,root),'utf8')));
  assert.match(app,/path="\/" element={<LaunchGate/);
  assert.match(app,/path="\/onizleme" element={<Landing/);
- assert.match(gate,/Tribündeki yerini hazırlıyoruz/);
+ assert.match(gate,/ÇOK YAKINDA/);
+ assert.doesNotMatch(gate,/Gizlilik|Çerezler|İletişim|SüperTribün/);
+ assert.match(app,/!isLaunchGate && <CookieConsent/);
  assert.match(robots,/Disallow: \/$/m);
  assert.match(vercel,/"\/onizleme"/);
 });

@@ -28,6 +28,7 @@ function Site() {
     loaded.current = next;
   }, [consent]);
   const openPreferences = () => setPreferencesOpen(true);
+  const isLaunchGate = pathname === '/';
   return (
     <>
       <Routes>
@@ -38,9 +39,9 @@ function Site() {
         <Route path="/hesap-silme" element={<LegalPage kind="accountDeletion" onOpenPreferences={openPreferences} />} />
         <Route path="*" element={<LegalPage kind="missing" onOpenPreferences={openPreferences} />} />
       </Routes>
-      <CookieConsent consent={consent} open={preferencesOpen} onOpen={openPreferences} onClose={() => setPreferencesOpen(false)} />
-      {measurementEnabled && consent?.analytics && <Analytics beforeSend={beforeAnalytics} />}
-      {measurementEnabled && consent?.performance && <SpeedInsights beforeSend={beforePerformance} />}
+      {!isLaunchGate && <CookieConsent consent={consent} open={preferencesOpen} onOpen={openPreferences} onClose={() => setPreferencesOpen(false)} />}
+      {!isLaunchGate && measurementEnabled && consent?.analytics && <Analytics beforeSend={beforeAnalytics} />}
+      {!isLaunchGate && measurementEnabled && consent?.performance && <SpeedInsights beforeSend={beforePerformance} />}
     </>
   );
 }
