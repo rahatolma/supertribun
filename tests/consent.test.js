@@ -95,12 +95,13 @@ test('save does not coerce arbitrary truthy input into consent', () => {
   assert.equal(store.allows('analytics'), false);
   assert.equal(store.allows('performance'), false);
 });
-test('all three button events require opt-in and use fixed non-personal properties', () => {
-  for (const name of ['discover_click', 'app_store_click', 'play_store_click']) {
+test('all button events require opt-in and use fixed non-personal properties', () => {
+  for (const name of ['discover_click', 'app_store_click', 'play_store_click', 'share_open_app_click']) {
     assert.equal(permittedEvent(name, false), null);
     assert.equal(permittedEvent(name, true).name, name);
   }
   assert.equal(permittedEvent('app_store_click', true).properties.status, 'coming_soon');
+  assert.deepEqual(permittedEvent('share_open_app_click', true).properties, { location: 'prediction_share' });
   assert.equal(permittedEvent('email=user@example.com', true), null);
   assert.equal(permittedEvent('__proto__', true), null);
 });
@@ -109,5 +110,6 @@ test('measurement filters fail closed and remove query/hash data', () => {
   assert.equal(filterMeasurement(event, false), null);
   assert.equal(filterMeasurement(event, true).url, 'https://supertribun.com/gizlilik');
   assert.equal(filterMeasurement({ ...event, url: 'https://supertribun.com/user/secret' }, true), null);
+  assert.equal(filterMeasurement({ ...event, url: 'https://supertribun.com/t/shared?token=secret' }, true).url, 'https://supertribun.com/t/shared');
   assert.equal(filterMeasurement({ ...event, url: 'invalid' }, true), null);
 });

@@ -1,6 +1,8 @@
 {
   "rewrites": [
+    { "source": "/t/:id", "destination": "/api/share?id=:id" },
     { "source": "/gizlilik", "destination": "/index.html" },
-    { "source": "/cerez-politikasi", "destination": "/index.html" }
+    { "source": "/cerez-politikasi", "destination": "/index.html" },
+    { "source": "/hesap-silme", "destination": "/index.html" }
   ]
 }

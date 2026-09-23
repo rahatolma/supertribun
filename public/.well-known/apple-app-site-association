@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["NX934R23UD.com.supertribun.app"],
+        "components": [
+          {
+            "/": "/t/*",
+            "comment": "SüperTribün prediction share links"
+          }
+        ]
+      }
+    ]
+  }
+}

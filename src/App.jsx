@@ -33,6 +33,7 @@ function Site() {
         <Route path="/" element={<Landing onOpenPreferences={openPreferences} />} />
         <Route path="/gizlilik" element={<LegalPage kind="privacy" onOpenPreferences={openPreferences} />} />
         <Route path="/cerez-politikasi" element={<LegalPage kind="cookies" onOpenPreferences={openPreferences} />} />
+        <Route path="/hesap-silme" element={<LegalPage kind="accountDeletion" onOpenPreferences={openPreferences} />} />
         <Route path="*" element={<LegalPage kind="missing" onOpenPreferences={openPreferences} />} />
       </Routes>
       <CookieConsent consent={consent} open={preferencesOpen} onOpen={openPreferences} onClose={() => setPreferencesOpen(false)} />

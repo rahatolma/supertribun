@@ -35,11 +35,13 @@ Son kontrol: 21 Eylül 2026. Bu dosya yalnızca mevcut Vite/React tanıtım site
 | Keşfet | `discover_click` | `location: hero` |
 | App Store — Yakında | `app_store_click` | `location: download`, `platform: ios`, `status: coming_soon` |
 | Google Play — Yakında | `play_store_click` | `location: download`, `platform: android`, `status: coming_soon` |
+| Paylaşılan tahmin → Uygulamada aç | `share_open_app_click` | `location: prediction_share` |
 
 - Bu isimler önceki Vercel olay isimleriyle korunmuştur. Eski kod rızaya bağlı değildi; önceki ve yeni dönemleri karşılaştırırken ölçüm kapsamının değiştiği dikkate alınmalıdır.
 - Sadece analitik izni verenlerin yeni tıklamaları gönderilir. İzin öncesi tıklamalar sonradan topluca gönderilmez. Ret, butonların işlevini engellemez.
 - Vercel Events ekranında toplam olay ile ziyaretçi sayısı ayrıdır; ziyaretçi ölçümü kesin, kalıcı tekil insan kimliği değildir. Reklam/izleme engelleyicileri ve izin reddi sayıları düşürür.
 - “Yakında” tıklaması ilgi göstergesidir. Gerçek indirmeler App Store Connect ve Google Play Console üzerinden ayrı izlenir. Bu iki toplamın bölümü doğrudan site dönüşüm oranı değildir.
+- Paylaşım adresindeki rastgele kimlik Vercel sayfa yoluna veya olay özelliğine gönderilmez; sayfa görünümü `/t/[id]` / `/t/shared` olarak ölçülür. Bu olay da indirme veya kayıt değildir.
 - Yerel `npm run dev` hiçbir Vercel ölçümü göndermez. Vite preview üretim koşullarını çalıştırır, fakat Vercel’in sunucu uçları yerelde bulunmaz; panel teslimatı yerelde doğrulanamaz.
 - Mağazalar açıldığında gerçek hedef URL’ler ve gerekiyorsa kampanya parametreleri eklenecek; `status` değeri güncellenecek. İndirme atfı ile site tıklaması ayrı raporlanacak.
 

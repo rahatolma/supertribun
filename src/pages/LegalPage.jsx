@@ -11,7 +11,7 @@ const Privacy = () => <>
     <ul>
       <li><strong>Site sunumu ve güvenlik:</strong> Sayfayı sunan altyapı, isteğin iletilmesi ve güvenliğin sağlanması için IP adresi, istek zamanı, adres ve tarayıcı bilgileri gibi teknik verileri işleyebilir. Bunlar isteğe bağlı ziyaret ölçümünden ayrıdır.</li>
       <li><strong>Tercih kaydı:</strong> Analitik ve performans seçimlerin, metin sürümü ve kayıt/sona erme zamanı tarayıcındaki yerel depolamada saklanır. Ayrı bir hesapla ilişkilendirilmez.</li>
-      <li><strong>İzinli ziyaret ölçümü:</strong> Vercel Web Analytics ile sayfalar, yönlendiren site, cihaz/tarayıcı, yaklaşık konum ve üç tanıtım butonunun tıklanmaları değerlendirilir. Buton tıklaması uygulamanın indirildiği anlamına gelmez.</li>
+      <li><strong>İzinli ziyaret ölçümü:</strong> Vercel Web Analytics ile sayfalar, yönlendiren site, cihaz/tarayıcı, yaklaşık konum; üç tanıtım butonu ve paylaşılan tahmin sayfasındaki “Uygulamada aç” düğmesinin tıklanmaları değerlendirilir. Buton tıklaması uygulamanın indirildiği anlamına gelmez.</li>
       <li><strong>İzinli performans ölçümü:</strong> Vercel Speed Insights ile sayfanın yüklenme, etkileşim ve görsel kararlılık ölçümleri ile teknik cihaz/bağlantı bilgileri değerlendirilir.</li>
       <li><strong>Destek yazışmaları:</strong> E-posta gönderirsen adresin, mesajın, gönüllü paylaştığın ekler ve yazışma bilgileri talebini cevaplamak için işlenir. Lütfen gerekli olmayan kimlik, parola veya hassas bilgi gönderme.</li>
     </ul>
@@ -43,7 +43,7 @@ const Cookies = () => <>
     <div className="legal-inventory">
       <article><h3>Gerekli tercih kaydı</h3><dl><dt>Ad / teknoloji</dt><dd><code>cookieConsent</code> / localStorage</dd><dt>İçerik</dt><dd>Seçimler, metin sürümü, kayıt ve sona erme zamanı.</dd><dt>Amaç / süre</dt><dd>Seçimini hatırlamak; 180 gün geçerli. Reklam veya ziyaretçi kimliği değildir.</dd><dt>Kontrol</dt><dd>Tercihleri değiştirebilir veya tarayıcıdan site verilerini silebilirsin.</dd></dl></article>
       <article><h3>Hata halinde güvenli kapatma</h3><dl><dt>Ad / teknoloji</dt><dd><code>supertribun.measurementBlocked</code> / sessionStorage</dd><dt>Amaç / süre</dt><dd>Tercih kaydedilemezse eski iznin yeniden ölçüm başlatmasını engeller. Başarılı kayıtla kaldırılır; en fazla ilgili tarayıcı oturumu boyunca tutulur.</dd></dl></article>
-      <article><h3>Ziyaret ve tıklama ölçümü</h3><dl><dt>Sağlayıcı</dt><dd>Vercel Web Analytics</dd><dt>Başlangıç</dt><dd>Kapalı. Yalnızca analitik izniyle açılır.</dd><dt>Amaç</dt><dd>Site kullanımı ve Keşfet, App Store, Google Play butonlarına ilgiyi ölçmek. “Yakında” butonuna basılması da tıklamadır; indirme değildir.</dd><dt>Teknoloji / süre</dt><dd>Çerezsiz ölçüm. Sağlayıcı raporlarının saklama süresi yayın kontrolünde ayrıca doğrulanacaktır; 180 günlük tercih süresi bu raporlara uygulanmaz.</dd></dl></article>
+      <article><h3>Ziyaret ve tıklama ölçümü</h3><dl><dt>Sağlayıcı</dt><dd>Vercel Web Analytics</dd><dt>Başlangıç</dt><dd>Kapalı. Yalnızca analitik izniyle açılır.</dd><dt>Amaç</dt><dd>Site kullanımı; Keşfet, App Store, Google Play ve paylaşılan tahmin sayfasındaki “Uygulamada aç” düğmesine ilgiyi ölçmek. “Yakında” veya uygulamayı aç düğmesine basılması indirme değildir.</dd><dt>Teknoloji / süre</dt><dd>Çerezsiz ölçüm. Paylaşım kimliği ölçüm adresine veya olay özelliklerine gönderilmez. Sağlayıcı raporlarının saklama süresi yayın kontrolünde ayrıca doğrulanacaktır; 180 günlük tercih süresi bu raporlara uygulanmaz.</dd></dl></article>
       <article><h3>Performans ölçümü</h3><dl><dt>Sağlayıcı</dt><dd>Vercel Speed Insights</dd><dt>Başlangıç</dt><dd>Kapalı. Yalnızca performans izniyle açılır.</dd><dt>Amaç</dt><dd>Sayfa hızını ve etkileşim kalitesini değerlendirmek.</dd><dt>Teknoloji / süre</dt><dd>Çerezsiz teknik ölçüm. Rapor saklama süresi sağlayıcı/plan üzerinden ayrıca doğrulanacaktır.</dd></dl></article>
     </div>
     <p>Bu envanter site koduna eklediğimiz araçları kapsar. Barındırma ve güvenlik sağlayıcılarının kendi teknik kayıtları ayrıca değerlendirilir; canlı alan adının ağ/çerez kontrolü tamamlanmadan “başka hiçbir kayıt yoktur” denilemez.</p>
@@ -59,8 +59,27 @@ const Cookies = () => <>
   </section>
 </>;
 
+const AccountDeletion = () => <>
+  <section><h2>Hesabını ve verilerini silme</h2>
+    <p>SüperTribün hesabını uygulamanın içinden kalıcı olarak silebilirsin. Bu işlem yalnızca uygulamayı telefondan kaldırmak veya cihazdan çıkış yapmak değildir.</p>
+    <ol>
+      <li>SüperTribün’de hesabına giriş yap.</li>
+      <li><strong>Kariyer → Ayarlar → Hesabımı sil</strong> yolunu aç.</li>
+      <li>Silinecek verileri incele, ekrandaki doğrulamayı tamamla ve işlemi onayla.</li>
+    </ol>
+  </section>
+  <section><h2>Neler silinir?</h2>
+    <p>Hesabın; profilin, tahminlerin, puan ve kariyer kayıtların, oda üyeliklerin ve oda içeriklerin, akış yorumların, takip/engel ilişkilerin ve hesabına bağlı destek taleplerin kalıcı silme kapsamındadır. Başka kullanıcıların yasal hakları, güvenlik ve hukuki yükümlülükler için tutulması zorunlu sınırlı kayıtlar varsa bunlar yalnızca gerekli süre boyunca ayrıştırılarak saklanabilir.</p>
+    <p>Toplulaştırılmış ve artık hesabınla ilişkilendirilemeyen istatistikler kişisel hesap verisi değildir ve geriye dönük olarak ayrıştırılamayabilir.</p>
+  </section>
+  <section><h2>Uygulamaya erişemiyorsan</h2>
+    <p>Kayıtlı e-posta adresinden <a href="mailto:destek@supertribun.com?subject=S%C3%BCperTrib%C3%BCn%20hesap%20silme%20talebi">destek@supertribun.com</a> adresine “SüperTribün hesap silme talebi” başlığıyla yaz. Parolanı, SMS kodunu, kimlik belgeni veya ödeme bilgini e-postaya ekleme. Hesabın sana ait olduğunu doğrulamak için kayıtlı adrese güvenli bir doğrulama adımı gönderilebilir.</p>
+    <p>Güvenlik nedeniyle farklı bir e-posta adresinden gönderilen veya hesabı yeterince doğrulanamayan talepler doğrudan silme işlemine dönüştürülmez.</p>
+  </section>
+</>;
+
 export default function LegalPage({ kind, onOpenPreferences }) {
-  const title = kind === 'privacy' ? 'Web Sitesi Gizlilik ve Aydınlatma Metni' : kind === 'cookies' ? 'Çerez ve Ölçüm Politikası' : 'Sayfa bulunamadı';
+  const title = kind === 'privacy' ? 'Web Sitesi Gizlilik ve Aydınlatma Metni' : kind === 'cookies' ? 'Çerez ve Ölçüm Politikası' : kind === 'accountDeletion' ? 'SüperTribün Hesap Silme' : 'Sayfa bulunamadı';
   useEffect(() => {
     const original = document.title;
     document.title = `${title} | SüperTribün`;
@@ -71,11 +90,12 @@ export default function LegalPage({ kind, onOpenPreferences }) {
     {kind !== 'missing' && <>
       <p className="legal-version">20 Eylül 2026 · Sürüm 2026-09-20 · Yayın öncesi çalışma metni</p>
       <aside className="legal-draft"><strong>İnceleme sürümü.</strong> Teknik uygulama açıklanmıştır; resmi başvuru adresi, sağlayıcı saklama/aktarım şartları ve hukuki değerlendirme tamamlanmadan nihai yayın metni olarak kabul edilmemelidir.</aside>
-      {kind === 'privacy' ? <Privacy /> : <Cookies />}
+      {kind === 'privacy' ? <Privacy /> : kind === 'cookies' ? <Cookies /> : <AccountDeletion />}
     </>}
     <footer className="legal-footer">
       <Link to="/gizlilik">Gizlilik ve Aydınlatma</Link>
       <Link to="/cerez-politikasi">Çerez Politikası</Link>
+      <Link to="/hesap-silme">Hesap silme</Link>
       <button onClick={onOpenPreferences}>Çerez tercihleri</button>
       <a href="mailto:destek@supertribun.com">destek@supertribun.com</a>
     </footer>
