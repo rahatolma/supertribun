@@ -2,7 +2,6 @@ import React from 'react';
 import { ImageResponse } from '@vercel/og';
 import { fetchShareData, shareId, trDate } from './_share-data.js';
 
-export const config={runtime:'edge'};
 const h=React.createElement;
 const fallback={background:'#F2EEE8',accent:'#9B948B'};
 const panel={display:'flex',flexDirection:'column',padding:'18px 22px',borderBottom:'1px solid #E5DDD2'};
@@ -48,6 +47,6 @@ export default async function handler(request){
         h('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',marginTop:24}},
           h('div',{style:{display:'flex',flexDirection:'column',background:'#F0ECE6',borderRadius:18,padding:'14px 28px',alignItems:'center'}},h('span',{style:{fontSize:24,fontWeight:800,color:'#655B50'}},'Tahmin kilitli'),h('span',{style:{fontSize:19,color:'#655B50',marginTop:5}},trDate(data.locked_at))),
           h('span',{style:{fontSize:26,fontWeight:900,color:'#855800'}},'Sen de katıl →'))));
-    return new ImageResponse(card,{width:1200,height:1200,headers:{'Cache-Control':'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'}});
+    return new ImageResponse(card,{width:1200,height:1200});
   }catch{return new Response('Preview unavailable',{status:502});}
 }
