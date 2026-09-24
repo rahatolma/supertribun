@@ -3,7 +3,10 @@
     { "source": "/t/:id", "destination": "/api/share?id=:id" },
     { "source": "/auth/challenge", "destination": "/index.html" },
     { "source": "/onizleme", "destination": "/index.html" },
+    { "source": "/uyelik-kosullari", "destination": "/index.html" },
     { "source": "/gizlilik", "destination": "/index.html" },
+    { "source": "/topluluk-kurallari", "destination": "/index.html" },
+    { "source": "/puanlama-ve-oyun-kurallari", "destination": "/index.html" },
     { "source": "/cerez-politikasi", "destination": "/index.html" },
     { "source": "/hesap-silme", "destination": "/index.html" }
   ],
