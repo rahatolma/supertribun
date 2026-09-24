@@ -16,11 +16,18 @@ test('mobile footer override follows the desktop grid and prevents overflow', ()
     'flex-direction: column;',
     'justify-content: center;',
     'overflow-wrap: anywhere;',
-    '.cta-section { padding: 72px 20px; }',
+    '.cta-section { padding: 72px 20px 50px; }',
   ]) assert.match(mobile, new RegExp(rule.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 });
 
 test('footer keeps the support address as a direct mail link', () => {
   assert.match(page, /href="mailto:destek@supertribun\.com"/);
   assert.match(page, />destek@supertribun\.com</);
+});
+
+test('scroll-to-top action is the final footer control', () => {
+  const legalEnd = page.indexOf('</nav>', page.indexOf('className="footer-legal"'));
+  const scrollTop = page.indexOf('className="btn-scroll-top"');
+  assert.ok(legalEnd >= 0);
+  assert.ok(scrollTop > legalEnd);
 });

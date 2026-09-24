@@ -4,10 +4,12 @@ import { readFile } from 'node:fs/promises';
 
 const app = await readFile(new URL('../src/App.jsx', import.meta.url), 'utf8');
 const legal = await readFile(new URL('../src/pages/LegalPage.jsx', import.meta.url), 'utf8');
+const landing = await readFile(new URL('../src/pages/Landing.jsx', import.meta.url), 'utf8');
 
 test('public account deletion route is stable and linked from the site footer', () => {
   assert.match(app, /path="\/hesap-silme"/);
   assert.match(legal, /to="\/hesap-silme"/);
+  assert.match(landing, /to="\/hesap-silme"/);
   assert.match(legal, /Kariyer → Ayarlar → Hesabımı sil/);
 });
 

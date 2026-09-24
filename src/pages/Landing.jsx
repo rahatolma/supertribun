@@ -201,9 +201,6 @@ export default function Landing({ onOpenPreferences }) {
             <a href="mailto:destek@supertribun.com" className="text-muted">destek@supertribun.com</a>
           </div>
 
-          <button className="btn-scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            Yukarı çık ↑
-          </button>
         </div>
         <nav className="footer-legal" aria-label="Gizlilik ve site tercihleri">
           <Link to="/uyelik-kosullari">Üyelik Koşulları</Link>
@@ -211,8 +208,12 @@ export default function Landing({ onOpenPreferences }) {
           <Link to="/topluluk-kurallari">Topluluk Kuralları</Link>
           <Link to="/puanlama-ve-oyun-kurallari">Puan ve Oyun Kuralları</Link>
           <Link to="/cerez-politikasi">Çerez Politikası</Link>
+          <Link to="/hesap-silme">Hesap Silme</Link>
           <button onClick={onOpenPreferences}>Çerez tercihleri</button>
         </nav>
+        <button className="btn-scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          Yukarı çık ↑
+        </button>
       </footer>
     </div>
   );
