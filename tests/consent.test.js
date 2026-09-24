@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { CONSENT_KEY, CONSENT_VERSION, CONSENT_LIFETIME, parseConsent, createConsentStore } from '../src/privacy/consent.js';
 import { filterMeasurement, permittedEvent } from '../src/privacy/measurement-policy.js';
 
@@ -105,10 +106,15 @@ test('all button events require opt-in and use fixed non-personal properties', (
   assert.equal(permittedEvent('email=user@example.com', true), null);
   assert.equal(permittedEvent('__proto__', true), null);
 });
+test('first consented click initializes the analytics queue before tracking', async () => {
+  const source = await readFile(new URL('../src/privacy/measurement.js', import.meta.url), 'utf8');
+  assert.match(source, /inject\(\{ beforeSend: beforeAnalytics \}\);\s*track\(event\.name, event\.properties\);/);
+});
 test('measurement filters fail closed and remove query/hash data', () => {
   const event = { type: 'pageview', url: 'https://supertribun.com/gizlilik?email=test@example.com#private' };
   assert.equal(filterMeasurement(event, false), null);
   assert.equal(filterMeasurement(event, true).url, 'https://supertribun.com/gizlilik');
+  assert.equal(filterMeasurement({ ...event, url: 'https://supertribun.com/onizleme?campaign=private#hero' }, true).url, 'https://supertribun.com/onizleme');
   assert.equal(filterMeasurement({ ...event, url: 'https://supertribun.com/user/secret' }, true), null);
   assert.equal(filterMeasurement({ ...event, url: 'https://supertribun.com/t/shared?token=secret' }, true).url, 'https://supertribun.com/t/shared');
   assert.equal(filterMeasurement({ ...event, url: 'invalid' }, true), null);

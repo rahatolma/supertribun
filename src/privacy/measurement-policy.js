@@ -1,4 +1,4 @@
-const ALLOWED_PATHS = new Set(['/', '/gizlilik', '/cerez-politikasi', '/hesap-silme', '/t/shared']);
+const ALLOWED_PATHS = new Set(['/', '/onizleme', '/gizlilik', '/cerez-politikasi', '/hesap-silme', '/t/shared']);
 const EVENTS = {
   discover_click: { location: 'hero' },
   app_store_click: { location: 'download', platform: 'ios', status: 'coming_soon' },

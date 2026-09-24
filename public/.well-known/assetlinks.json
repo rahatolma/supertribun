@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.supertribun.app",
+      "sha256_cert_fingerprints": [
+        "D9:31:CD:C7:6A:ED:1C:E4:A2:5B:2A:A4:9E:00:F2:67:6C:92:3E:AE:6D:88:F8:69:4E:24:CE:B6:E4:CF:29:F1"
+      ]
+    }
+  }
+]
