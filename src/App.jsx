@@ -36,7 +36,10 @@ function Site() {
         <Route path="/" element={<LaunchGate />} />
         <Route path="/auth/challenge" element={<TurnstileChallenge />} />
         <Route path="/onizleme" element={<Landing onOpenPreferences={openPreferences} />} />
+        <Route path="/uyelik-kosullari" element={<LegalPage kind="terms" onOpenPreferences={openPreferences} />} />
         <Route path="/gizlilik" element={<LegalPage kind="privacy" onOpenPreferences={openPreferences} />} />
+        <Route path="/topluluk-kurallari" element={<LegalPage kind="community" onOpenPreferences={openPreferences} />} />
+        <Route path="/puanlama-ve-oyun-kurallari" element={<LegalPage kind="scoring" onOpenPreferences={openPreferences} />} />
         <Route path="/cerez-politikasi" element={<LegalPage kind="cookies" onOpenPreferences={openPreferences} />} />
         <Route path="/hesap-silme" element={<LegalPage kind="accountDeletion" onOpenPreferences={openPreferences} />} />
         <Route path="*" element={<LegalPage kind="missing" onOpenPreferences={openPreferences} />} />

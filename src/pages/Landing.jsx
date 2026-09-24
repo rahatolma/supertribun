@@ -206,7 +206,10 @@ export default function Landing({ onOpenPreferences }) {
           </button>
         </div>
         <nav className="footer-legal" aria-label="Gizlilik ve site tercihleri">
-          <Link to="/gizlilik">Gizlilik ve Aydınlatma</Link>
+          <Link to="/uyelik-kosullari">Üyelik Koşulları</Link>
+          <Link to="/gizlilik">Gizlilik ve KVKK</Link>
+          <Link to="/topluluk-kurallari">Topluluk Kuralları</Link>
+          <Link to="/puanlama-ve-oyun-kurallari">Puan ve Oyun Kuralları</Link>
           <Link to="/cerez-politikasi">Çerez Politikası</Link>
           <button onClick={onOpenPreferences}>Çerez tercihleri</button>
         </nav>
