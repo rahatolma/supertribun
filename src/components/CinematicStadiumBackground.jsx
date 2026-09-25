@@ -1,11 +1,9 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './CinematicStadiumBackground.css';
 
 export default function CinematicStadiumBackground() {
-  const [players, setPlayers] = useState([]);
-
-  useEffect(() => {
+  const [players] = useState(() => {
     // Oyuncuları sadece sol-orta taraftaki yeşil çim alana (telefonların olmadığı alana) hapsediyoruz
     const newPlayers = Array.from({ length: 22 }).map((_, i) => {
       // X ekseninde telefonlardan uzak durmaları için 5vw - 55vw arası
@@ -44,8 +42,8 @@ export default function CinematicStadiumBackground() {
         isHome: i < 11
       };
     });
-    setPlayers(newPlayers);
-  }, []);
+    return newPlayers;
+  });
 
   return (
     <div className="cinematic-wrapper">
