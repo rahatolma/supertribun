@@ -24,11 +24,19 @@ test('server share reader uses the public RPC and validates its response',async 
  await assert.rejects(fetchShareData(id),/SHARE_RESPONSE/);
 });
 
+test('server reader supports a public match without requiring a prediction',async t=>{
+ const old={url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY,fetch:global.fetch};
+ t.after(()=>{if(old.url===undefined)delete process.env.SUPABASE_URL;else process.env.SUPABASE_URL=old.url;if(old.key===undefined)delete process.env.SUPABASE_PUBLISHABLE_KEY;else process.env.SUPABASE_PUBLISHABLE_KEY=old.key;global.fetch=old.fetch;});
+ process.env.SUPABASE_URL='https://project.supabase.co';process.env.SUPABASE_PUBLISHABLE_KEY='public-key';
+ let call;global.fetch=async(url,options)=>{call={url,options};return new Response(JSON.stringify({...payload,locked_at:undefined,prediction_home:undefined,prediction_away:undefined}),{status:200,headers:{'Content-Type':'application/json'}})};
+ assert.equal((await fetchShareData(id,'match')).match_id,payload.match_id);assert.match(call.url,/rpc\/get_match_share$/);assert.match(call.options.body,/p_match_id/);
+});
+
 test('Vercel routes expose one dynamic share page, OG image and mobile associations',async()=>{
  const root=new URL('../',import.meta.url);
  const [vercel,page,image,aasa,assetlinks]=await Promise.all(['vercel.json','api/share.js','api/share-image.js','public/.well-known/apple-app-site-association','public/.well-known/assetlinks.json'].map(file=>readFile(new URL(file,root),'utf8')));
- assert.match(vercel,/"\/t\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/\/t\/\[id\]/);assert.match(page,/og:image:height" content="630/);assert.match(page,/aspect-ratio:1200\/630/);assert.match(page,/width="1200" height="630"/);assert.doesNotMatch(page,/cookieConsent|Çerez tercihleri|mağaza bağlantıları yakında/i);assert.match(image,/request\.query\?\.id/);assert.match(image,/new URL\(request\.url,'https:\/\/supertribun\.com'\)/);assert.match(image,/sharp\(Buffer\.from/);assert.match(image,/width="1200" height="630"/);assert.match(image,/data:image\/png;base64/);assert.doesNotMatch(image,/ImageResponse|runtime:'edge'/);
- assert.match(aasa,/NX934R23UD\.com\.supertribun\.app/);assert.match(aasa,/"\/t\/\*"/);
+ assert.match(vercel,/"\/t\/:id"/);assert.match(vercel,/"\/m\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/kind==='match'/);assert.match(page,/og:image:height" content="630/);assert.match(page,/aspect-ratio:1200\/630/);assert.match(page,/width="1200" height="630"/);assert.match(page,/www\.supertribun\.com\/api\/share-image/);assert.doesNotMatch(page,/cookieConsent|Çerez tercihleri|mağaza bağlantıları yakında/i);assert.match(image,/request\.query\?\.id/);assert.match(image,/new URL\(request\.url,'https:\/\/supertribun\.com'\)/);assert.match(image,/new ImageResponse/);assert.match(image,/width:1200,height:630/);assert.match(image,/data:image\/png;base64/);assert.doesNotMatch(image,/sharp|runtime:'edge'/);
+ assert.match(aasa,/NX934R23UD\.com\.supertribun\.app/);assert.match(aasa,/"\/t\/\*"/);assert.match(aasa,/"\/m\/\*"/);
  const androidLinks=JSON.parse(assetlinks);
  assert.equal(androidLinks[0].target.package_name,'com.supertribun.app');
  assert.deepEqual(androidLinks[0].relation,['delegate_permission/common.handle_all_urls']);

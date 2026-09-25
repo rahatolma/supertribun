@@ -7,6 +7,10 @@
           {
             "/": "/t/*",
             "comment": "SüperTribün prediction share links"
+          },
+          {
+            "/": "/m/*",
+            "comment": "SüperTribün match share links"
           }
         ]
       }
