@@ -1,0 +1,216 @@
+.ai-page-container {
+  min-height: 100vh;
+  background-color: #050505;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  font-family: var(--font-family, 'Inter', sans-serif);
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-top {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.15) 0%, rgba(255, 184, 0, 0) 70%);
+  top: -200px;
+  left: -200px;
+}
+
+.glow-bottom {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.1) 0%, rgba(255, 184, 0, 0) 70%);
+  bottom: -300px;
+  right: -300px;
+}
+
+.ai-content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+/* Hero */
+.ai-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ai-badge {
+  display: inline-block;
+  background: rgba(255, 184, 0, 0.1);
+  border: 1px solid rgba(255, 184, 0, 0.3);
+  color: var(--color-accent, #FFB800);
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px rgba(255, 184, 0, 0.2);
+}
+
+.ai-headline {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+
+.ai-subheadline {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: #a0a0a0;
+  max-width: 800px;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 400;
+}
+
+.highlight-text {
+  color: #ffffff;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Cards Grid */
+.ai-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.ai-glass-card {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 184, 0, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ai-glass-card:hover::before {
+  opacity: 1;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.card-text {
+  font-size: 1.05rem;
+  color: #999999;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Closing */
+.ai-closing {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.primary-closing {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+}
+
+.secondary-closing {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: #a0a0a0;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.ai-cta-button {
+  background: var(--color-accent, #FFB800);
+  color: #000000;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.ai-disclaimer {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #555555;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Utils */
+.text-accent {
+  color: var(--color-accent, #FFB800);
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .ai-content-wrapper {
+    gap: 4rem;
+  }
+  .ai-glass-card {
+    padding: 2rem;
+  }
+}

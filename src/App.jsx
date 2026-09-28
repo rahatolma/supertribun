@@ -5,6 +5,7 @@ import CookieConsent from './components/CookieConsent';
 import LegalPage from './pages/LegalPage';
 import LaunchGate from './pages/LaunchGate';
 import TurnstileChallenge from './pages/TurnstileChallenge';
+import SuperTribunAI from './pages/SuperTribunAI';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { consentStore, watchConsent } from './privacy/consent';
@@ -35,6 +36,7 @@ function Site() {
       <Routes>
         <Route path="/" element={<LaunchGate />} />
         <Route path="/auth/challenge" element={<TurnstileChallenge />} />
+        <Route path="/ai" element={<SuperTribunAI onOpenPreferences={openPreferences} />} />
         <Route path="/onizleme" element={<Landing onOpenPreferences={openPreferences} />} />
         <Route path="/uyelik-kosullari" element={<LegalPage kind="terms" onOpenPreferences={openPreferences} />} />
         <Route path="/gizlilik" element={<LegalPage kind="privacy" onOpenPreferences={openPreferences} />} />

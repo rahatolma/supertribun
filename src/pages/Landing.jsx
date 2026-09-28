@@ -48,7 +48,7 @@ export default function Landing({ onOpenPreferences }) {
               Sözünü söyle.<br />
               <span className="text-accent" style={{ display: 'inline-block', marginTop: '16px' }}>Tribünde yerini al.</span>
             </motion.h1>
-            <motion.div variants={fadeUpVariant}>
+            <motion.div variants={fadeUpVariant} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
               <button
                 className="btn-glow"
                 onClick={() => {
@@ -58,6 +58,11 @@ export default function Landing({ onOpenPreferences }) {
               >
                 SüperTribün'ü keşfet <ArrowRight size={20} />
               </button>
+              <Link to="/ai">
+                <button className="btn-glow btn-white">
+                  SuperTribun AI <ArrowRight size={20} />
+                </button>
+              </Link>
             </motion.div>
           </motion.div>
 
