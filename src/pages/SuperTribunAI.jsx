@@ -63,8 +63,7 @@ export default function SuperTribunAI({ onOpenPreferences }) {
           </motion.div>
 
           <motion.div
-            className="hero-mockup-group"
-            style={{ top: '260px' }}
+            className="ai-mockup-wrapper"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -72,13 +71,9 @@ export default function SuperTribunAI({ onOpenPreferences }) {
             <motion.img 
               src="/ai-panel.png" 
               alt="SuperTribun AI Panel" 
-              style={{ 
-                width: '600px', 
-                borderRadius: '16px',
-                boxShadow: '0 30px 60px rgba(0, 0, 0, 0.8)'
-              }}
+              className="ai-mockup-img"
               whileHover={{ 
-                y: -85, 
+                y: -150, 
                 boxShadow: '0 50px 100px rgba(0, 0, 0, 1)' 
               }}
               transition={{ duration: 0.5, ease: 'easeOut' }}

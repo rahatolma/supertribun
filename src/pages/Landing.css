@@ -174,6 +174,27 @@
   cursor: pointer;
 }
 
+/* AI Page Mockup */
+.ai-mockup-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  margin-top: 150px;
+  margin-bottom: -220px; /* Görselin altını marquee'nin altına sokar */
+}
+
+.ai-mockup-img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  object-fit: contain;
+}
+
 /* --- Başlangıç Durumları (Hepsi Aşağıda Gizli) --- */
 .phone-center {
   z-index: 3;
@@ -278,6 +299,18 @@
     height: 320px;
     top: 10px;
     left: 0;
+  }
+  
+  .ai-mockup-wrapper {
+    margin-top: 90px;
+    margin-bottom: -120px; /* Mobilde de marquee'nin altına sokar */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .ai-mockup-img {
+    border-radius: 8px; /* Slightly smaller radius on mobile */
   }
   
   .phone-mockup-img {
