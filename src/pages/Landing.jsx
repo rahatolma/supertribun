@@ -58,9 +58,9 @@ export default function Landing({ onOpenPreferences }) {
               >
                 SüperTribün'ü keşfet <ArrowRight size={20} />
               </button>
-              <Link to="/ai">
+              <Link to="/ai" onClick={() => trackSiteEvent('ai_page_click')}>
                 <button className="btn-glow btn-white">
-                  SuperTribun AI <ArrowRight size={20} />
+                  SüperTribün AI <ArrowRight size={20} />
                 </button>
               </Link>
             </motion.div>
@@ -80,8 +80,8 @@ export default function Landing({ onOpenPreferences }) {
 
         <div className="marquee-container">
           <div className="animate-marquee">
-            <span className="marquee-text">MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇGÜDÜNE GÜVEN <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DOSTLARINA MEYDAN OKU <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> HEYECANA ORTAK OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TRİBÜNÜN SESİ OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
-            <span className="marquee-text">MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇGÜDÜNE GÜVEN <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DOSTLARINA MEYDAN OKU <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> HEYECANA ORTAK OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TRİBÜNÜN SESİ OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
+            <span className="marquee-text">MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇGÜDÜNE GÜVEN <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> ODANDA YARIŞ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> HEYECANA ORTAK OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TRİBÜNÜN SESİ OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
+            <span className="marquee-text">MAÇTAN ÖNCE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇGÜDÜNE GÜVEN <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SÖZÜNÜ SÖYLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> ODANDA YARIŞ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKORU KİLİTLE <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MAÇIN MUHABBETİNİ YAP <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> HEYECANA ORTAK OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TOPLULUĞU GÖR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TRİBÜNÜN SESİ OL <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> </span>
           </div>
         </div>
       </section>
@@ -109,8 +109,8 @@ export default function Landing({ onOpenPreferences }) {
             transition={{ duration: 0.6 }}
           >
             <div className="card-tag">01 / ARENA</div>
-            <h3 className="card-title">Skorunu söyle.</h3>
-            <p className="card-desc">İki dokunuşla tahminini oluştur. Kilitle ve maç başlayınca sözünün arkasında dur.</p>
+            <h3 className="card-title">Maçını keşfet.</h3>
+            <p className="card-desc">Yaklaşan derbilerden seçtiğin liglere uzanan maç kartlarını kaydır. Skorunu oluştur, kilitle ve sözünün arkasında dur.</p>
             <div className="card-visual-circles">
               <div className="circle-1"></div>
               <div className="circle-2">
@@ -129,7 +129,7 @@ export default function Landing({ onOpenPreferences }) {
           >
             <div className="card-tag text-accent">02 / AKIŞ</div>
             <h3 className="card-title text-white">Maçın<br />muhabbetini<br />yap.</h3>
-            <p className="card-desc text-muted">Takımını ara, fikrini paylaş, maçın içinde kal. Tribün sesi skorla bitmez.</p>
+            <p className="card-desc text-muted">Fikrini paylaş, yorumlara katıl ve odalarda kendi tribününü kur. Maçın sesi skorla bitmez.</p>
             <div className="card-visual-chat">
               <div className="chat-bubble"></div>
               <div className="chat-bubble right"></div>
@@ -145,8 +145,8 @@ export default function Landing({ onOpenPreferences }) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="card-tag">03 / SIRALAMA</div>
-            <h3 className="card-title">Kim daha iyi<br />biliyor bak.</h3>
-            <p className="card-desc">Kullanıcıları, odaları ve kaynakları karşılaştır. Rekabet doğru yerde güzel.</p>
+            <h3 className="card-title">Sözün kayda<br />geçsin.</h3>
+            <p className="card-desc">Sonucu ve tam skoru bildiğin maçları gör. Kullanıcıları, odaları; topluluk, veri modeli, oranlar ve SüperTribün AI ile karşılaştır.</p>
             <div className="card-visual-bars">
               <div className="bar bar-1"></div>
               <div className="bar bar-2"></div>

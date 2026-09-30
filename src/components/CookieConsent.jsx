@@ -58,7 +58,7 @@ export default function CookieConsent({ consent, open, onOpen, onClose }) {
             <span className="consent-category-title">Ziyaret ve tıklama ölçümü</span>
             <input id="consent-analytics" type="checkbox" checked={preferences.analytics} onChange={(event) => setDraft({ ...preferences, analytics: event.target.checked })} aria-describedby="analytics-description" />
           </label>
-          <p id="analytics-description">Vercel Web Analytics: sayfa, yönlendiren site, cihaz/tarayıcı, yaklaşık konum ve Keşfet, App Store, Google Play butonlarının tıklanma istatistikleri. İndirme sayısı değildir. Çerez kullanmaz; veriler yurt dışında işlenebilir.</p>
+          <p id="analytics-description">Vercel Web Analytics: sayfa, yönlendiren site, cihaz/tarayıcı, yaklaşık konum ve Keşfet, SüperTribün AI, App Store, Google Play butonlarının tıklanma istatistikleri. İndirme sayısı değildir. Çerez kullanmaz; veriler yurt dışında işlenebilir.</p>
         </div>
         <div className="consent-category">
           <label className="consent-category-heading" htmlFor="consent-performance">

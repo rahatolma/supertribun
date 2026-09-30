@@ -1,6 +1,9 @@
-const ALLOWED_PATHS = new Set(['/', '/onizleme', '/uyelik-kosullari', '/gizlilik', '/topluluk-kurallari', '/puanlama-ve-oyun-kurallari', '/cerez-politikasi', '/hesap-silme', '/t/shared']);
+const ALLOWED_PATHS = new Set(['/', '/ai', '/onizleme', '/uyelik-kosullari', '/gizlilik', '/topluluk-kurallari', '/puanlama-ve-oyun-kurallari', '/cerez-politikasi', '/hesap-silme', '/t/shared']);
 const EVENTS = {
   discover_click: { location: 'hero' },
+  ai_page_click: { location: 'hero', destination: 'ai' },
+  ai_motor_click: { location: 'ai_hero', destination: 'ai_motor' },
+  ai_back_click: { location: 'ai_cta', destination: 'preview' },
   app_store_click: { location: 'download', platform: 'ios', status: 'coming_soon' },
   play_store_click: { location: 'download', platform: 'android', status: 'coming_soon' },
   share_open_app_click: { location: 'prediction_share' },

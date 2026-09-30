@@ -195,6 +195,109 @@
   object-fit: contain;
 }
 
+.ai-production-card {
+  width: min(100%, 580px);
+  padding: 32px;
+  border: 1px solid rgba(255, 184, 0, 0.35);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(24, 24, 24, 0.96), rgba(8, 8, 8, 0.98));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), inset 0 1px rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.ai-production-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #9a9a9a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.ai-production-head strong {
+  padding: 7px 10px;
+  border: 1px solid rgba(54, 190, 125, 0.4);
+  border-radius: 999px;
+  color: #39c982;
+  background: rgba(54, 190, 125, 0.08);
+  font-size: 11px;
+}
+
+.ai-production-version {
+  margin: 28px 0 10px;
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.ai-production-card h2 {
+  margin: 0;
+  font-size: clamp(30px, 3vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.ai-production-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.ai-production-metrics div {
+  min-width: 0;
+  padding: 16px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.ai-production-metrics strong,
+.ai-production-metrics span {
+  display: block;
+}
+
+.ai-production-metrics strong {
+  color: var(--color-accent);
+  font-size: clamp(20px, 2vw, 30px);
+}
+
+.ai-production-metrics span {
+  margin-top: 5px;
+  color: #949494;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.ai-production-flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 184, 0, 0.09);
+  color: #f4f4f4;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.ai-production-flow b {
+  color: var(--color-accent);
+}
+
+.ai-production-note {
+  margin: 18px 0 0;
+  color: #8d8d8d;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 /* --- Başlangıç Durumları (Hepsi Aşağıda Gizli) --- */
 .phone-center {
   z-index: 3;
@@ -311,6 +414,24 @@
   
   .ai-mockup-img {
     border-radius: 8px; /* Slightly smaller radius on mobile */
+  }
+
+  .ai-production-card {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .ai-production-metrics {
+    gap: 6px;
+  }
+
+  .ai-production-metrics div {
+    padding: 12px 8px;
+  }
+
+  .ai-production-flow {
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .phone-mockup-img {

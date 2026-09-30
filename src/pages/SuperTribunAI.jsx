@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import CinematicStadiumBackground from '../components/CinematicStadiumBackground';
@@ -7,6 +7,11 @@ import { trackSiteEvent } from '../privacy/measurement';
 import './Landing.css'; // Ana sayfanın (onizleme) genel stil ve tasarım dilini kopyalıyoruz
 
 export default function SuperTribunAI({ onOpenPreferences }) {
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = 'SüperTribün AI | Olasılık motoru';
+    return () => { document.title = previousTitle; };
+  }, []);
   const fadeUpVariant = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
@@ -40,20 +45,16 @@ export default function SuperTribunAI({ onOpenPreferences }) {
               visible: { transition: { staggerChildren: 0.1 } }
             }}
           >
-            <motion.p variants={fadeUpVariant} className="hero-subtitle">— MODEL</motion.p>
+            <motion.p variants={fadeUpVariant} className="hero-subtitle">— OLASILIK MOTORU</motion.p>
             <motion.h1 variants={fadeUpVariant} className="hero-title">
-              Tahmin etmiyoruz.<br />
-              <span className="text-accent" style={{ display: 'inline-block', marginTop: '16px' }}>Fiyatlıyoruz.</span>
+              Tek sonuç söylemiyoruz.<br />
+              <span className="text-accent" style={{ display: 'inline-block', marginTop: '16px' }}>Olasılık üretiyoruz.</span>
             </motion.h1>
-            <motion.p variants={fadeUpVariant} style={{ fontSize: '15px', color: '#a0a0a0', lineHeight: 1.6, marginBottom: '48px', maxWidth: '800px' }}>
-              Herkes sonucu bilir iddiasında. Biz çok farklı bir soruya cevap veriyoruz:<br/>
-              <strong style={{ color: 'white', fontWeight: 600 }}>"Piyasanın fiyatladığı olasılık ile gerçek olasılık arasında ne kadar fark var?"</strong>
-            </motion.p>
             <motion.div variants={fadeUpVariant}>
               <button
                 className="btn-glow"
                 onClick={() => {
-                  trackSiteEvent('discover_click');
+                  trackSiteEvent('ai_motor_click');
                   document.getElementById('motor')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
                 }}
               >
@@ -68,23 +69,30 @@ export default function SuperTribunAI({ onOpenPreferences }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <motion.img 
-              src="/ai-panel.png" 
-              alt="SuperTribun AI Panel" 
-              className="ai-mockup-img"
-              whileHover={{ 
-                y: -150, 
-                boxShadow: '0 50px 100px rgba(0, 0, 0, 1)' 
-              }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            />
+            <div className="ai-production-card" role="img" aria-label="SüperTribün AI doğrulanmış üretim modeli özeti">
+              <div className="ai-production-head">
+                <span>ÜRETİM MODELİ</span>
+                <strong>DOĞRULANDI</strong>
+              </div>
+              <p className="ai-production-version">st-ai-poisson-glm-v1</p>
+              <h2>Geçmiş maçtan<br />1-X-2 olasılığına.</h2>
+              <div className="ai-production-metrics">
+                <div><strong>40.934</strong><span>tamamlanmış maç</span></div>
+                <div><strong>8</strong><span>turnuva</span></div>
+                <div><strong>3.192</strong><span>kilitli test maçı</span></div>
+              </div>
+              <div className="ai-production-flow" aria-hidden="true">
+                <span>VERİ</span><b>→</b><span>xG</span><b>→</b><span>SKOR MATRİSİ</span><b>→</b><span>1-X-2</span>
+              </div>
+              <p className="ai-production-note">Canlıya yalnızca test eşiğini geçen model çıkar.</p>
+            </div>
           </motion.div>
         </div>
 
         <div className="marquee-container">
           <div className="animate-marquee">
-            <span className="marquee-text">3.000+ MAÇLIK HAFIZA <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> KALİBRE OLASILIK <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SIFIR TAVİZ DİSİPLİNİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DEĞERLİ ORAN SİNYALİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SAF FİYAT FARKI <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MATEMATİKTEN ÖĞRENİR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SİHİRLİ SAYILARA İNANMAZ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> GERİYE DÖNÜK TEST <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DİSİPLİNİN ÖDÜLÜ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span></span>
-            <span className="marquee-text">3.000+ MAÇLIK HAFIZA <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> KALİBRE OLASILIK <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SIFIR TAVİZ DİSİPLİNİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DEĞERLİ ORAN SİNYALİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SAF FİYAT FARKI <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> MATEMATİKTEN ÖĞRENİR <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SİHİRLİ SAYILARA İNANMAZ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> GERİYE DÖNÜK TEST <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DİSİPLİNİN ÖDÜLÜ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span></span>
+            <span className="marquee-text">40.934 TAMAMLANMIŞ MAÇ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> 8 TURNUVA <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> ZAMAN AĞIRLIKLI ÖĞRENME <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TAKIM + RAKİP ETKİSİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇ SAHA ETKİSİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DİNLENME GÜNÜ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> POISSON GOL MODELİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKOR MATRİSİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> 1-X-2 OLASILIKLARI <span className="text-accent" style={{ margin: '0 32px' }}>✦</span></span>
+            <span className="marquee-text">40.934 TAMAMLANMIŞ MAÇ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> 8 TURNUVA <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> ZAMAN AĞIRLIKLI ÖĞRENME <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> TAKIM + RAKİP ETKİSİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> İÇ SAHA ETKİSİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> DİNLENME GÜNÜ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> POISSON GOL MODELİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> SKOR MATRİSİ <span className="text-accent" style={{ margin: '0 32px' }}>✦</span> 1-X-2 OLASILIKLARI <span className="text-accent" style={{ margin: '0 32px' }}>✦</span></span>
           </div>
         </div>
       </section>
@@ -98,8 +106,8 @@ export default function SuperTribunAI({ onOpenPreferences }) {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUpVariant}
         >
-          <p className="section-subtitle">ÖĞRENİYORUM → KANITLIYORUM → KURAL KOYUYORUM</p>
-          <h2 className="section-title">Futbolun fiyatı<br />burada belirlenir.</h2>
+          <p className="section-subtitle">GEÇMİŞ VERİ → BEKLENEN GOL → SKOR MATRİSİ → OLASILIK</p>
+          <h2 className="section-title">Maçın üç ihtimali<br />tek modelde buluşur.</h2>
         </motion.div>
 
         <div className="bento-grid">
@@ -111,9 +119,9 @@ export default function SuperTribunAI({ onOpenPreferences }) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="card-tag">01 / HAFIZA</div>
-            <h3 className="card-title">3.000+ Maçlık<br/>Hafıza</h3>
-            <p className="card-desc">SuperTribun AI, geçmiş veriyle kendi kendini eğitir, takım güçlerini ve zamanın etkisini matematikten öğrenir. Elle yazılmış katsayılara, sihirli sayılara inanmaz.</p>
+            <div className="card-tag">01 / GERÇEK VERİ</div>
+            <h3 className="card-title">40.934 maçtan<br/>öğrenir.</h3>
+            <p className="card-desc">Sekiz turnuvadaki tamamlanmış maçlar zaman sırasıyla işlenir. Sentetik oranlar eğitime katılmaz; yeni maçlar daha yüksek ağırlık taşır.</p>
             <div className="card-visual-circles">
               <div className="circle-1"></div>
               <div className="circle-2">
@@ -130,9 +138,9 @@ export default function SuperTribunAI({ onOpenPreferences }) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="card-tag text-accent">02 / KALİBRASYON</div>
-            <h3 className="card-title text-white">Kalibre<br />Olasılık</h3>
-            <p className="card-desc text-muted">Gösterdiği her yüzde, geriye dönük testlerde kanıtlanmış kalibrasyondur. Veri neyi reddediyorsa, o da onu reddeder.</p>
+            <div className="card-tag text-accent">02 / ÖĞRENEN MODEL</div>
+            <h3 className="card-title text-white">İki takım için<br />beklenen gol üretir.</h3>
+            <p className="card-desc text-muted">Poisson GLM; takımı, rakibi, ligi, iç saha etkisini ve maçlar arası dinlenme süresini birlikte değerlendirir.</p>
             <div className="card-visual-chat" style={{ justifyContent: 'center' }}>
               {/* Olasılık barı gibi bir tasarım (chat balonu stilini bozmadan) */}
               <div className="chat-bubble" style={{ width: '100%', background: 'linear-gradient(90deg, var(--color-accent) 45%, #222 45%)' }}></div>
@@ -148,9 +156,9 @@ export default function SuperTribunAI({ onOpenPreferences }) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="card-tag">03 / DİSİPLİN</div>
-            <h3 className="card-title">Sıfır Taviz<br />Disiplini</h3>
-            <p className="card-desc" style={{ color: '#665326' }}>Yaktığı her <strong>"Değerli Oran"</strong> sinyali, piyasa ile model arasındaki saf fiyat farkıdır. Demediği her tahmin, "bunun değeri yok" diyebilme gücüdür.</p>
+            <div className="card-tag">03 / DOĞRULANMIŞ 1-X-2</div>
+            <h3 className="card-title">Skor matrisinden<br />üç olasılık.</h3>
+            <p className="card-desc" style={{ color: '#665326' }}>Beklenen goller skor dağılımına dönüşür. Yalnızca test eşiğini geçen sürümün ev sahibi, beraberlik ve deplasman yüzdeleri uygulamaya gelir.</p>
             <div className="card-visual-bars">
               <div className="bar bar-1"></div>
               <div className="bar bar-2"></div>
@@ -170,15 +178,15 @@ export default function SuperTribunAI({ onOpenPreferences }) {
           variants={fadeUpVariant}
         >
           <h1 className="cta-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.1 }}>
-            "Rakipler sis bombası atar.<br/>
-            Biz <span className="text-accent">kalibrasyon eğrisini</span> gösteririz."
+            Üç sezon ileri yürüyen test.<br/>
+            <span className="text-accent">3.192 maçlık</span> kilitli kontrol.
           </h1>
           <p className="cta-desc" style={{ fontSize: '24px', fontWeight: '500', marginTop: '24px' }}>
-            Tahmin herkesin işi. Değer, bizim işimiz.
+            Basit lig ortalamasına karşı daha düşük hata veren model uygulamaya alındı.
           </p>
 
           <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'center' }}>
-            <Link to="/onizleme">
+            <Link to="/onizleme" onClick={() => trackSiteEvent('ai_back_click')}>
               <button className="btn-glow">
                 SüperTribün'e Dön <ArrowRight size={20} />
               </button>
@@ -186,7 +194,7 @@ export default function SuperTribunAI({ onOpenPreferences }) {
           </div>
           
           <p style={{ marginTop: '60px', fontSize: '0.85rem', color: '#666', maxWidth: '600px', margin: '60px auto 0', lineHeight: 1.5 }}>
-            "Modelimiz geçmiş veriyle kalibre edilir; hiçbir olasılık garanti değildir.<br/>Değer, disiplinin ödülüdür."
+            Model çıktıları istatistiksel olasılıktır; kesin maç sonucu veya bahis kazancı vaadi değildir.
           </p>
         </motion.div>
       </section>
