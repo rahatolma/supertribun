@@ -414,10 +414,10 @@
     max-width: 100%;
   }
 
-  /* Mobil için telefon boyutlarını küçültüyoruz ve yukarı çekiyoruz */
+  /* Mobilde üç ekran birlikte okunacak kadar büyük, ancak taşmayacak genişlikte. */
   .hero-mockup-group {
-    width: 320px;
-    height: 320px;
+    width: min(360px, 100%);
+    height: 360px;
     top: 10px;
     left: 0;
   }
@@ -453,7 +453,7 @@
   }
   
   .phone-mockup-img {
-    width: 120px; /* 140px'den küçültüldü */
+    width: 160px;
   }
 
   .phone-center {
@@ -962,7 +962,7 @@
     text-align: center;
   }
   .footer-legal { margin-top: 24px; padding-top: 16px; gap: 4px 16px; }
-  .social-showcase { padding: 80px 20px; }
+  .social-showcase { padding: 80px 10%; }
   .social-showcase-head { margin-bottom: 38px; }
   .social-showcase-head h2 { font-size: 32px; line-height: 1.05; }
   .social-showcase-head > p:last-child { font-size: 16px; }
