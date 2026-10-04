@@ -94,7 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 8% 0 12%;
+  padding: 0 10%;
   z-index: 10;
 }
 
@@ -713,14 +713,14 @@
 
 /* Duel + Story showcase */
 .social-showcase {
-  padding: 130px 8%;
+  padding: 130px 10%;
   color: #fff;
   background: #0b0b0b;
   overflow: hidden;
 }
 
 .social-showcase-head { max-width: 940px; margin-bottom: 64px; }
-.social-showcase-head h2 { margin: 0; font-size: clamp(44px, 6vw, 84px); line-height: .98; letter-spacing: -.055em; }
+.social-showcase-head h2 { margin: 0; font-size: 64px; line-height: 1; letter-spacing: -.05em; }
 .social-showcase-head h2 span { color: var(--color-accent); }
 .social-showcase-head > p:last-child { max-width: 720px; margin-top: 28px; color: #989898; font-size: 18px; line-height: 1.6; }
 .social-showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -729,7 +729,7 @@
 .story-panel { background: radial-gradient(circle at 76% 74%, #3a2500 0, #15110a 36%, #121212 68%); }
 .showcase-copy { max-width: 520px; position: relative; z-index: 2; }
 .showcase-kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--color-accent); font-size: 12px; font-weight: 900; letter-spacing: .15em; }
-.showcase-copy h3 { margin: 22px 0 18px; font-size: clamp(38px, 4vw, 60px); line-height: 1; letter-spacing: -.05em; }
+.showcase-copy h3 { margin: 22px 0 18px; font-size: 36px; line-height: 1.1; letter-spacing: -.04em; }
 .showcase-copy > p { max-width: 520px; color: #aaa; font-size: 16px; line-height: 1.6; }
 .showcase-feature { display: flex; align-items: center; gap: 10px; margin-top: 22px; color: #dedede; font-size: 14px; font-weight: 700; }
 .showcase-feature svg { color: var(--color-accent); flex: 0 0 auto; }
@@ -874,11 +874,11 @@
   .footer-legal { margin-top: 24px; padding-top: 16px; gap: 4px 16px; }
   .social-showcase { padding: 80px 20px; }
   .social-showcase-head { margin-bottom: 38px; }
-  .social-showcase-head h2 { font-size: 42px; }
+  .social-showcase-head h2 { font-size: 32px; line-height: 1.05; }
   .social-showcase-head > p:last-child { font-size: 16px; }
   .social-showcase-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .showcase-panel { min-height: 0; padding: 28px 22px; border-radius: 22px; }
-  .showcase-copy h3 { font-size: 40px; }
+  .showcase-copy h3 { font-size: 32px; }
   .showcase-action { min-height: 42px; margin-top: 20px; padding: 0 15px; font-size: 13px; }
 }
 

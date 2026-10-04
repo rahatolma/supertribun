@@ -12,4 +12,7 @@ test('landing gives duel and Story clean product panels with focused actions',()
   assert.match(page,/className="showcase-action"/);assert.match(page,/Meydan okumayı gönder/);assert.match(page,/Story’de paylaş/);
   assert.doesNotMatch(page,/className="duel-visual"/);assert.doesNotMatch(page,/className="story-card"/);
   assert.match(css,/\.social-showcase-grid/);assert.match(css,/\.showcase-action/);
+  assert.match(css,/\.social-showcase \{[\s\S]*padding: 130px 10%/);
+  assert.match(css,/\.social-showcase-head h2 \{[^}]*font-size: 64px/);
+  assert.match(css,/\.showcase-copy h3 \{[^}]*font-size: 36px/);
 });
