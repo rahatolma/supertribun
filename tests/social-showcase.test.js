@@ -16,3 +16,12 @@ test('landing gives duel and Story clean product panels with focused actions',()
   assert.match(css,/\.social-showcase-head h2 \{[^}]*font-size: 64px/);
   assert.match(css,/\.showcase-copy h3 \{[^}]*font-size: 36px/);
 });
+
+test('landing presents every primary app area without hiding cards in a carousel',()=>{
+  for(const copy of ['01 / ARENA','02 / AKIŞ','03 / SIRALAMA','04 / ODALAR','05 / KARİYER','Kendi tribününü kur','Sözünün geçmişini gör'])assert.match(page,new RegExp(copy));
+  assert.match(css,/\.bento-grid \{[\s\S]*grid-template-columns: repeat\(6, minmax\(0, 1fr\)\)/);
+  assert.match(css,/\.bento-card\.feature-card-primary \{ grid-column: span 2; \}/);
+  assert.match(css,/\.bento-card\.feature-card-wide \{ grid-column: span 3; min-height: 420px; \}/);
+  assert.match(page,/Kariyer adımlarını tamamla, rozetlerini aç/);
+  assert.doesNotMatch(page,/feature-carousel|swiper/i);
+});

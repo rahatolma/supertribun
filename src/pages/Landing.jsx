@@ -102,7 +102,7 @@ export default function Landing({ onOpenPreferences }) {
         <div className="bento-grid">
           {/* Card 1: Arena */}
           <motion.div
-            className="bento-card card-light"
+            className="bento-card feature-card-primary card-light"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -121,7 +121,7 @@ export default function Landing({ onOpenPreferences }) {
 
           {/* Card 2: Akış */}
           <motion.div
-            className="bento-card card-dark"
+            className="bento-card feature-card-primary card-dark"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -138,7 +138,7 @@ export default function Landing({ onOpenPreferences }) {
 
           {/* Card 3: Sıralama */}
           <motion.div
-            className="bento-card card-yellow"
+            className="bento-card feature-card-primary card-yellow"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -151,6 +151,43 @@ export default function Landing({ onOpenPreferences }) {
               <div className="bar bar-1"></div>
               <div className="bar bar-2"></div>
               <div className="bar bar-3"></div>
+            </div>
+          </motion.div>
+
+          {/* Card 4: Odalar */}
+          <motion.div
+            className="bento-card feature-card-wide card-room"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="card-tag text-accent">04 / ODALAR</div>
+            <h3 className="card-title text-white">Kendi tribününü kur.</h3>
+            <p className="card-desc text-muted">Arkadaşlarınla odanı kur, aynı maçlarda tahmin yap ve oda sıralamasında rekabet et.</p>
+            <div className="card-visual-room" aria-hidden="true">
+              <div className="room-member">G</div>
+              <div className="room-member is-accent">M</div>
+              <div className="room-member">E</div>
+              <div className="room-score"><strong>12</strong><span>oda puanı</span></div>
+            </div>
+          </motion.div>
+
+          {/* Card 5: Kariyer */}
+          <motion.div
+            className="bento-card feature-card-wide card-career"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="card-tag">05 / KARİYER</div>
+            <h3 className="card-title">Sözünün geçmişini gör.</h3>
+            <p className="card-desc">Bekleyen ve sonuçlanan tahminlerini takip et. Kariyer adımlarını tamamla, rozetlerini aç ve gelişimini tek yerde gör.</p>
+            <div className="card-visual-career" aria-hidden="true">
+              <div className="career-step is-complete"><i>1</i><strong>İlk söz</strong><span>Rozet açıldı</span></div>
+              <div className="career-step is-current"><i>2</i><strong>Seri 5</strong><span>Devam ediyor</span></div>
+              <div className="career-step"><i>3</i><strong>Usta</strong><span>Sıradaki rozet</span></div>
             </div>
           </motion.div>
         </div>

@@ -578,9 +578,12 @@
 
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 32px;
 }
+
+.bento-card.feature-card-primary { grid-column: span 2; }
+.bento-card.feature-card-wide { grid-column: span 3; min-height: 420px; }
 
 .bento-card {
   border-radius: var(--radius-lg);
@@ -599,7 +602,6 @@
 
 .card-light {
   background-color: #F4F2EE;
-  grid-column: span 1;
 }
 
 .card-dark {
@@ -609,6 +611,15 @@
 
 .card-yellow {
   background-color: #FFF2CD;
+}
+
+.card-room {
+  background: radial-gradient(circle at 82% 78%, #493500 0, #19150b 34%, #111 68%);
+  color: white;
+}
+
+.card-career {
+  background: linear-gradient(145deg, #f4f2ee 0%, #fff2cd 100%);
 }
 
 .card-tag {
@@ -674,6 +685,7 @@
 
 .card-visual-chat {
   margin-top: auto;
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -694,6 +706,7 @@
 
 .card-visual-bars {
   margin-top: auto;
+  padding-top: 24px;
   display: flex;
   align-items: flex-end;
   gap: 12px;
@@ -710,6 +723,83 @@
 .bar-1 { height: 40%; }
 .bar-2 { height: 100%; opacity: 1; }
 .bar-3 { height: 60%; }
+
+.card-visual-room {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  min-height: 126px;
+}
+
+.room-member {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-right: -14px;
+  border: 5px solid #151515;
+  border-radius: 50%;
+  background: #2c2c2c;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.room-member.is-accent {
+  background: var(--color-accent);
+  color: #15120a;
+  z-index: 1;
+}
+
+.room-score {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  padding-left: 28px;
+  border-left: 1px solid #3b3528;
+  text-align: right;
+}
+
+.room-score strong { color: var(--color-accent); font-size: 42px; line-height: 1; }
+.room-score span { margin-top: 8px; color: #8d8d8d; font-size: 13px; }
+
+.card-visual-career {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.card-visual-career > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  padding: 22px 18px;
+  border: 1px solid rgba(0, 0, 0, .07);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .68);
+}
+
+.career-step i {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 8px;
+  border: 1px solid #cfc5b4;
+  border-radius: 50%;
+  color: #8c806f;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.career-step.is-complete i { border-color: var(--color-accent); background: var(--color-accent); color: #16120a; }
+.career-step.is-current i { border-color: #ad8021; color: #8b650e; box-shadow: 0 0 0 4px rgba(255, 184, 0, .12); }
+.card-visual-career strong { font-size: 18px; line-height: 1.1; }
+.card-visual-career span { color: #756b5d; font-size: 12px; }
 
 /* Duel + Story showcase */
 .social-showcase {
@@ -930,19 +1020,32 @@
     left: 0;
   }
   .bento-grid { grid-template-columns: 1fr; }
-  .bento-card { min-height: 430px; }
+  .bento-card.feature-card-primary,
+  .bento-card.feature-card-wide { grid-column: 1 / -1; min-height: 430px; }
 }
 
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
+    text-align: left;
   }
-  .hero-text { align-self: flex-start; }
+  .hero-text { align-self: flex-start; width: 100%; }
+  .hero-actions { align-items: flex-start; justify-content: flex-start; }
   .hero-mockup-group {
     align-self: center;
     top: 70px;
   }
   .bento-grid { grid-template-columns: minmax(0, 1fr); }
-  .bento-card { min-height: 420px; }
+  .bento-card.feature-card-primary,
+  .bento-card.feature-card-wide { grid-column: 1 / -1; min-height: 420px; }
+}
+
+@media (max-width: 480px) {
+  .card-visual-career > div { padding: 18px 10px; }
+  .card-visual-career strong { font-size: 15px; }
+  .room-member { width: 58px; height: 58px; }
+  .room-score { padding-left: 18px; }
+  .room-score strong { font-size: 34px; }
 }
