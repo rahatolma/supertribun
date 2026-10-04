@@ -10,7 +10,7 @@ test('public account deletion route is stable and linked from the site footer', 
   assert.match(app, /path="\/hesap-silme"/);
   assert.match(legal, /to="\/hesap-silme"/);
   assert.match(landing, /to="\/hesap-silme"/);
-  assert.match(legal, /Kariyer → Ayarlar → Hesabımı sil/);
+  assert.match(legal, /Arena → Menü → Hesabım → Hesabımı sil/);
 });
 
 test('deletion instructions explain scope and offer a verified fallback without requesting secrets', () => {

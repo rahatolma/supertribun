@@ -14,7 +14,11 @@ test('published legal routes and footer links expose one consistent 15+ release'
     assert.ok(landing.includes(`to="${route}"`), route);
     assert.ok(vercel.rewrites.some(rule => rule.source === route && rule.destination === '/index.html'), route);
   }
-  assert.match(legal, /2026-09-25-v1 · Yürürlükte/);
+  assert.match(legal, /2026-10-04-v1 · Yürürlükte/);
   assert.match(legal, /yalnız 15 yaşını doldurmuş/);
+  assert.match(legal, /Arkadaşın.*davet|uygulamada olmayan bir arkadaşına/);
+  assert.match(legal, /Expo Push Service/);
+  assert.match(legal, /tek başına hesabı kapatmaz/);
+  assert.match(legal, /Arena → Menü → Hesabım → Hesabımı sil/);
   assert.doesNotMatch(legal, /13 yaş|13\+|Yayın öncesi çalışma metni|İnceleme sürümü/);
 });

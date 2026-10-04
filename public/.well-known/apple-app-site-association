@@ -5,6 +5,10 @@
         "appIDs": ["NX934R23UD.com.supertribun.app"],
         "components": [
           {
+            "/": "/d/*",
+            "comment": "SüperTribün single-use duel invitation links"
+          },
+          {
             "/": "/t/*",
             "comment": "SüperTribün prediction share links"
           },

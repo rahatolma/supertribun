@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Apple, Play } from 'lucide-react';
+import { ArrowRight, Apple, Play, Share2, Swords, UserPlus } from 'lucide-react';
 import CinematicStadiumBackground from '../components/CinematicStadiumBackground';
 import { Link } from 'react-router-dom';
 import { trackSiteEvent } from '../privacy/measurement';
@@ -48,7 +48,7 @@ export default function Landing({ onOpenPreferences }) {
               Sözünü söyle.<br />
               <span className="text-accent" style={{ display: 'inline-block', marginTop: '16px' }}>Tribünde yerini al.</span>
             </motion.h1>
-            <motion.div variants={fadeUpVariant} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <motion.div variants={fadeUpVariant} className="hero-actions">
               <button
                 className="btn-glow"
                 onClick={() => {
@@ -153,6 +153,41 @@ export default function Landing({ onOpenPreferences }) {
               <div className="bar bar-3"></div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Social competition showcase */}
+      <section className="social-showcase">
+        <motion.div className="social-showcase-head" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUpVariant}>
+          <p className="section-subtitle">MAÇTAN ÖNCE BAŞLAR</p>
+          <h2>Arkadaşına meydan oku.<br /><span>Sonra sözünü paylaş.</span></h2>
+          <p>Düello ve Story, SüperTribün’de verdiğin kararın maç başlamadan önce kayda geçmesini ve tribünün dışına taşmasını sağlar.</p>
+        </motion.div>
+
+        <div className="social-showcase-grid">
+          <motion.article className="showcase-panel duel-panel" initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: .7 }}>
+            <div className="showcase-copy">
+              <span className="showcase-kicker"><Swords size={17} /> DÜELLO</span>
+              <h3>Bir maç da olur.<br />Beş maç da.</h3>
+              <p>Maçlarını sepete ekle, rakibini seç ve meydan okumayı gönder. Arkadaşın henüz SüperTribün’de değilse süreli bağlantıyı WhatsApp veya SMS ile paylaş.</p>
+              <div className="showcase-feature"><UserPlus size={18} /><span>Rehber ve e-posta toplamadan davet</span></div>
+            </div>
+            <button className="showcase-action" type="button" onClick={() => document.getElementById('magaza')?.scrollIntoView({ behavior: 'smooth' })}>
+              Meydan okumayı gönder <ArrowRight size={18} />
+            </button>
+          </motion.article>
+
+          <motion.article className="showcase-panel story-panel" initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: .7, delay: .08 }}>
+            <div className="showcase-copy">
+              <span className="showcase-kicker"><Share2 size={17} /> STORY</span>
+              <h3>Tahminin maçtan<br />önce konuşsun.</h3>
+              <p>Kilitli tahminini 9:16 Story kartına dönüştür. Sonradan değiştirilmemiş sözünü tek dokunuşla paylaş.</p>
+              <div className="showcase-feature"><Share2 size={18} /><span>Instagram Story ölçüsünde paylaşım</span></div>
+            </div>
+            <button className="showcase-action" type="button" onClick={() => document.getElementById('magaza')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Share2 size={20} /> Story’de paylaş
+            </button>
+          </motion.article>
         </div>
       </section>
 

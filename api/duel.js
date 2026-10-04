@@ -1,0 +1,22 @@
+import {duelInviteId,fetchDuelInvite,trDate} from './_duel-data.js';
+
+const escape=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+
+export default async function handler(request,response){
+  const id=duelInviteId(request.query.id);
+  if(!id)return response.status(404).send('Düello daveti bulunamadı.');
+  try{
+    const data=await fetchDuelInvite(id),available=data.status==='pending';
+    const statusCopy={claimed:'Bu davet daha önce kullanılmış.',cancelled:'Bu davet gönderen tarafından iptal edilmiş.',expired:'Bu davetin süresi dolmuş.'}[data.status]||'';
+    const matches=data.matches.map(match=>`<li><span><strong>${escape(match.home)} – ${escape(match.away)}</strong><small>${escape(match.league)} · ${escape(trDate(match.kickoff_at))}</small></span></li>`).join('');
+    const canonical=`https://supertribun.com/d/${id}`;
+    response.setHeader('Content-Type','text/html; charset=utf-8');
+    response.setHeader('Cache-Control','private, no-store, max-age=0');
+    response.status(200).send(`<!doctype html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(data.challenger_name)} seni düelloya çağırdı · SüperTribün</title><meta name="description" content="${escape(data.challenger_name)} ile ${data.matches.length} maçlık SüperTribün düellosuna katıl."><link rel="canonical" href="${canonical}"><meta property="og:type" content="website"><meta property="og:site_name" content="SüperTribün"><meta property="og:title" content="${escape(data.challenger_name)} seni düelloya çağırdı"><meta property="og:description" content="${data.matches.length} maçlık meydan okumayı gör ve tahminlerini kilitle."><meta property="og:url" content="${canonical}"><meta property="og:image" content="https://www.supertribun.com/og-image.jpg"><link rel="icon" href="/favicon.png"><style>
+*{box-sizing:border-box}body{margin:0;background:#f7f4ef;color:#181716;font-family:Inter,system-ui,-apple-system,sans-serif}.page{min-height:100vh;display:grid;place-items:center;padding:26px 18px}.wrap{width:min(620px,100%)}.brand{width:210px;height:auto;margin:0 0 18px}.card{background:#fff;border:1px solid #ddd5ca;border-radius:26px;padding:clamp(24px,6vw,42px);box-shadow:0 24px 70px #382a1218}.eyebrow{margin:0 0 12px;color:#9b6800;letter-spacing:.16em;font-size:12px;font-weight:900}.card h1{font-size:clamp(34px,8vw,56px);letter-spacing:-.045em;line-height:1.02;margin:0}.lead{color:#696159;font-size:18px;line-height:1.55;margin:18px 0 24px}.matches{list-style:none;padding:0;margin:0 0 24px;border-top:1px solid #e7e0d7}.matches li{padding:16px 0;border-bottom:1px solid #e7e0d7}.matches span{display:grid;gap:5px}.matches strong{font-size:17px}.matches small{color:#81796f}.button{display:flex;min-height:56px;align-items:center;justify-content:center;border-radius:15px;background:#ffb400;color:#181716;text-decoration:none;font-weight:900;font-size:17px}.button.secondary{margin-top:10px;background:#eee9e1}.status{background:#fff0c9;border:1px solid #e8bd55;border-radius:14px;padding:16px;font-weight:800;line-height:1.45}.privacy{color:#777067;font-size:12px;line-height:1.6;margin:18px 4px 0}.privacy a{color:#795200}@media(max-width:520px){.page{align-items:start}.brand{width:175px}.card{border-radius:20px}}
+</style></head><body><main class="page"><div class="wrap"><img class="brand" src="/logo.png" alt="SüperTribün"><article class="card"><p class="eyebrow">DÜELLO DAVETİ</p><h1>${escape(data.challenger_name)} meydan okuyor.</h1><p class="lead">${data.matches.length} maçta tahminlerini karşılaştır. Para veya ödül yok; mesele futbol bilgisi ve tribün rekabeti.</p><ul class="matches">${matches}</ul>${available?`<a class="button" href="com.supertribun.app://d/${id}">Uygulamada düelloyu aç</a><a class="button secondary" href="/onizleme#magaza">SüperTribün'ü edin</a>`:`<p class="status">${escape(statusCopy)}</p><a class="button secondary" href="/onizleme">SüperTribün'ü keşfet</a>`}<p class="privacy">Bu bağlantı en geç ${escape(trDate(data.expires_at))} tarihinde sona erer ve yalnız bir kez kullanılabilir. SüperTribün bu davet için rehberini veya arkadaşının e-posta adresini toplamaz. <a href="/gizlilik">Gizlilik ve KVKK</a></p></article></div></main></body></html>`);
+  }catch(error){
+    const unavailable=String(error?.message||'').includes('DUEL_CONFIG');
+    response.status(unavailable?503:404).send('Bu düello daveti şu anda görüntülenemiyor.');
+  }
+}

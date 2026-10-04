@@ -7,7 +7,7 @@ const SUPPORT = <a href="mailto:destek@supertribun.com">destek@supertribun.com</
 const Privacy = () => <>
   <section><h2>1. Veri sorumlusu ve kapsam</h2>
     <p>SüperTribün, bireysel geliştirici Güngör Çepni tarafından sunulur. İletişim, bildirim ve KVKK başvuru kanalı {SUPPORT} adresidir.</p>
-    <p>Bu metin mobil uygulamadaki üyelik, profil, maç tahmini, kariyer ve sıralama, Akış, takip, engelleme, şikâyet, özel oda ve destek işlemleri ile supertribun.com web sitesini kapsar. SüperTribün yalnız 15 yaşını doldurmuş kişilere açıktır; 15 yaş altındaki kişiler hesap oluşturamaz.</p>
+    <p>Bu metin mobil uygulamadaki üyelik, profil, maç tahmini, kariyer ve sıralama, düello ve davet bağlantıları, bildirimler, Akış, takip, engelleme, şikâyet, özel oda ve destek işlemleri ile supertribun.com web sitesini kapsar. SüperTribün yalnız 15 yaşını doldurmuş kişilere açıktır; 15 yaş altındaki kişiler hesap oluşturamaz.</p>
     <p>Bu bir açık rıza metni değildir. Üyelik Koşulları’nı kabul etmek bütün veri işleme faaliyetlerine, pazarlamaya veya gelecekteki yeni amaçlara toplu açık rıza vermek anlamına gelmez.</p>
   </section>
   <section><h2>2. İşlenen veriler ve amaçlar</h2>
@@ -15,6 +15,8 @@ const Privacy = () => <>
       <li><strong>Hesap ve güvenlik:</strong> E-posta, hesap kimliği, doğrulama ve oturum bilgileri; giriş, şifre yenileme ve hesap güvenliği için işlenir. İsteğe bağlı telefon numarası ve doğrulama durumu hesaba bağlanabilir.</li>
       <li><strong>Profil ve oyun:</strong> Görünen ad, isteğe bağlı takım ve ad-soyad, tahminler, kilitleme zamanı, puanlar ve başarı istatistikleri; profili, oyunu, kariyeri ve sıralamayı sunmak için işlenir.</li>
       <li><strong>Topluluk:</strong> Yorumlar, oda üyelikleri ve mesajları, takip/engel ilişkileri ile şikâyet kayıtları; paylaşım, iletişim, kişiselleştirme, güvenlik ve moderasyon için işlenir.</li>
+      <li><strong>Düello ve davet:</strong> Seçilen maçlar, davet eden ve kabul eden hesaplar, davetin durumu ve süresi ile düello sonuçları meydan okumayı kurmak ve sonuçlandırmak için işlenir. Uygulamada olmayan arkadaş için tek kullanımlık süreli bağlantı üretilir; rehber veya arkadaşın e-posta adresi SüperTribün tarafından okunmaz.</li>
+      <li><strong>Bildirim:</strong> Kullanıcı izin verirse cihaz bildirim tokenı, platform, bildirim tercihleri, sessiz saatler ve teslim/hata sonucu; düello, maç ve oda bildirimlerini iletmek ve geçersiz tokenları kapatmak için işlenir. “Henüz tahmin yapmadın” hatırlatması varsayılan olarak kapalıdır.</li>
       <li><strong>Teknik ve destek:</strong> IP, istek, hata ve güvenlik günlükleri altyapı sağlayıcılarında işlenebilir. Destek yazışmaları talebi cevaplamak ve hakları korumak için tutulur.</li>
       <li><strong>Web ölçümü:</strong> Vercel Web Analytics ile anonim ve toplu sayfa/tıklama istatistikleri, Speed Insights ile izin verdiğinde performans ölçümleri değerlendirilir. Paylaşım kimliği, hesap bilgisi veya tahmin sahibinin kimliği ölçüm olayına eklenmez.</li>
     </ul>
@@ -28,13 +30,13 @@ const Privacy = () => <>
     <p>Sıralamalarda görünen ad, takım ve puan/başarı istatistikleri gösterilebilir. Maç kartındaki topluluk dağılımı en az 10 tahminde isim göstermeden toplulaştırılır. E-posta, isteğe bağlı gerçek ad-soyad, parola ve doğrulama kodları topluluk profiline dahil edilmez.</p>
   </section>
   <section><h2>5. Sağlayıcılar ve yurt dışı aktarım</h2>
-    <p>Supabase kimlik doğrulama ve uygulama veritabanı; Resend işletim e-postaları; Google ve Apple sosyal giriş; API-Football maç verisi; Vercel web barındırma/ölçüm; Cloudflare alan adı ve güvenlik; Alastyr destek e-postası için kullanılır.</p>
+    <p>Supabase kimlik doğrulama, uygulama veritabanı ve sunucu işlevleri; Resend işletim e-postaları; Google ve Apple sosyal giriş; API-Football ve Sportmonks futbol verisi; Expo Push Service ile Apple Push Notification service (APNs) ve Firebase Cloud Messaging (FCM) bildirim teslimi; Vercel web barındırma/ölçüm; Cloudflare alan adı ve güvenlik; Alastyr destek e-postası için kullanılır.</p>
     <p>Supabase projesinin seçili bölgesi Frankfurt’tur; diğer sağlayıcıların altyapı, destek ve alt işleyen düzenleri kapsamında veriler yurt dışındaki alıcılara aktarılabilir. Aktarımlar KVKK m.9 kapsamındaki uygulanabilir şart ve uygun güvence mekanizmasına dayanılarak, hizmet için gerekli veriyle sınırlı yürütülür.</p>
-    <p>API-Football’a kullanıcı e-postası, tahmini veya mesajı gönderilmez. İncelenen sürümde kullanıcı içeriğini yapay zekâ eğitimi için gönderen ya da reklam profili oluşturan bir entegrasyon yoktur.</p>
+    <p>API-Football ve Sportmonks’a kullanıcı e-postası, tahmini veya mesajı gönderilmez. Bildirim sağlayıcılarına yalnız teslim için gerekli cihaz tokenı ve bildirim içeriği iletilir. İncelenen sürümde kullanıcı içeriğini yapay zekâ eğitimi için gönderen ya da reklam profili oluşturan bir entegrasyon yoktur.</p>
   </section>
   <section><h2>6. Saklama, silme ve güvenlik</h2>
     <p>Hesap ve profil verileri hesap açık olduğu sürece; oyun geçmişi hesabı sunmak için; güvenlik günlükleri, destek yazışmaları ve hak başvuruları ise güvenlik, talep ve olası uyuşmazlık için gerekli süre boyunca tutulur. Sebep kalkınca veri silinir, yok edilir veya kişisel bağ geri döndürülemeyecek biçimde kaldırılır. Sağlayıcı yedekleri olağan silme döngüsünde üzerine yazılır.</p>
-    <p><strong>Kariyer → Ayarlar → Hesabımı sil</strong> yolundan kalıcı silme başlatılabilir. Uygulamaya erişemiyorsan kayıtlı e-posta adresinden destek kanalına başvurabilirsin. Kanunen saklanması gereken ayrıştırılmış kayıtlar yalnız gerekli süre boyunca tutulur.</p>
+    <p><strong>Arena → Menü → Hesabım → Hesabımı sil</strong> yolundan kalıcı silme başlatılabilir. Uygulamaya erişemiyorsan kayıtlı e-posta adresinden destek kanalına başvurabilirsin. Kanunen saklanması gereken ayrıştırılmış kayıtlar yalnız gerekli süre boyunca tutulur.</p>
     <p>Kimlik doğrulama, sunucu erişim kuralları ve kullanıcı bazlı veri ayrımı uygulanır. Hiçbir sistem için mutlak güvenlik taahhüdü verilmez.</p>
   </section>
   <section><h2>7. Hakların ve başvuru</h2>
@@ -47,10 +49,11 @@ const Terms = () => <>
   <section><h2>2. Hesabın</h2><p>Erişebildiğin bir e-posta veya doğrulanmış Google/Apple hesabıyla kayıt ol. Şifreni ve doğrulama kodlarını paylaşma; başkasını taklit etme, hesabını başkasına kullandırma veya sıralamayı etkilemek için çoklu hesap açma.</p></section>
   <section><h2>3. Tahmin ve puan</h2><p>Her maç için tek skor tahmini sunucu tarafından kabul edildiğinde kilitlenir ve değiştirilemez. Tam skor 3, doğru sonuç yönü 1, yanlış sonuç 0 puandır. Normal süre ve duraklama dakikaları esas alınır; uzatma ve penaltılar dahil değildir. Ayrıntılar <Link to="/puanlama-ve-oyun-kurallari">Puan ve Oyun Kuralları</Link>ndadır.</p></section>
   <section><h2>4. Para ve bahis yok</h2><p>Üyelik ve tahmin ücretsizdir. Para yatırma, bahis oynama, nakit kazanç veya maddi ödül yoktur. Puanların parasal değeri bulunmaz, satın alınamaz ve paraya çevrilemez.</p></section>
-  <section><h2>5. Akış, takip ve odalar</h2><p>Akış yorumları diğer üyelere açıktır. Özel oda içerikleri oda üyelerine gösterilir; davet kodunu yalnız davet etmek istediğin kişilerle paylaş. Odalar uçtan uca şifreli değildir ve ekran görüntüsü alınması teknik olarak engellenemez. Paylaşımlarında <Link to="/topluluk-kurallari">Topluluk Kuralları</Link>na uy.</p></section>
-  <section><h2>6. İçerik ve yaptırımlar</h2><p>İçeriğinin hakları sende kalır; hizmetin çalışması için içeriğin ilgili alanda saklanmasına ve gösterilmesine sınırlı kullanım izni verirsin. İhlalin ağırlığına göre içerik gizleme, uyarı, geçici kısıtlama veya hesap kapatma uygulanabilir. Karara {SUPPORT} üzerinden itiraz edebilirsin.</p></section>
-  <section><h2>7. Hesap silme ve değişiklikler</h2><p>Çıkış yapmak hesabı silmez. Uygulamadan veya <Link to="/hesap-silme">hesap silme sayfasındaki</Link> yöntemle kalıcı silme isteyebilirsin. Önemli koşul değişiklikleri tarih ve kapsamıyla duyurulur; yeni kabul gerektiren değişiklikler ayrıca onayına sunulur.</p></section>
-  <section><h2>8. Uygulanacak hukuk</h2><p>Türkiye hukuku uygulanır. Emredici mevzuat ve tüketici hukukundan doğan hakların saklıdır. SüperTribün kulüp, lig veya federasyonların resmî uygulaması değildir.</p></section>
+  <section><h2>5. Düellolar ve dış davetler</h2><p>Bir ila beş uygun maç seçerek kayıtlı bir kullanıcıya veya tek kullanımlık süreli bağlantıyla uygulamada olmayan bir arkadaşına meydan okuyabilirsin. Bağlantıyı paylaşacağın kanalı sen seçersin; SüperTribün rehberini veya arkadaşının e-posta adresini okumaz. Davet yalnız ilk geçerli kabulde hesaba bağlanır. Düello puanlarının parasal değeri ve ödülü yoktur.</p></section>
+  <section><h2>6. Akış, takip ve odalar</h2><p>Akış yorumları diğer üyelere açıktır. Özel oda içerikleri oda üyelerine gösterilir; davet kodunu yalnız davet etmek istediğin kişilerle paylaş. Odalar uçtan uca şifreli değildir ve ekran görüntüsü alınması teknik olarak engellenemez. Paylaşımlarında <Link to="/topluluk-kurallari">Topluluk Kuralları</Link>na uy.</p></section>
+  <section><h2>7. İçerik ve yaptırımlar</h2><p>İçeriğinin hakları sende kalır; hizmetin çalışması için içeriğin ilgili alanda saklanmasına ve gösterilmesine sınırlı kullanım izni verirsin. Gönderim öncesi otomatik uyarı karar veya ceza değildir. İhlalin ağırlığına göre insan incelemesiyle içerik gizleme, uyarı, geçici kısıtlama veya hesap kapatma uygulanabilir. Karara {SUPPORT} üzerinden itiraz edebilirsin.</p></section>
+  <section><h2>8. Hesap silme ve değişiklikler</h2><p>Çıkış yapmak hesabı silmez. Uygulamadan veya <Link to="/hesap-silme">hesap silme sayfasındaki</Link> yöntemle kalıcı silme isteyebilirsin. Önemli koşul değişiklikleri tarih ve kapsamıyla duyurulur; yeni kabul gerektiren değişiklikler ayrıca onayına sunulur.</p></section>
+  <section><h2>9. Uygulanacak hukuk</h2><p>Türkiye hukuku uygulanır. Emredici mevzuat ve tüketici hukukundan doğan hakların saklıdır. SüperTribün kulüp, lig veya federasyonların resmî uygulaması değildir.</p></section>
 </>;
 
 const Community = () => <>
@@ -58,7 +61,8 @@ const Community = () => <>
   <section><h2>2. Mahremiyet ve çocuk güvenliği</h2><p>Telefon, adres, kimlik/banka bilgisi, özel yazışma veya izinsiz görüntü paylaşma. Çocukların güvenliğini tehlikeye atan, cinsel istismar veya sömürü içeren davranış kesinlikle yasaktır. Acil tehlikede yalnız uygulama bildirimine güvenme; yetkili mercilere başvur.</p></section>
   <section><h2>3. Hile ve dolandırıcılık yok</h2><p>Sahte hesap, taklit, bot, spam, çoklu hesapla manipülasyon, oltalama, para toplama, bahis/kumar yönlendirmesi ve garantili kazanç iddiası yasaktır.</p></section>
   <section><h2>4. Telif ve hukuka uygunluk</h2><p>Yalnız paylaşmaya yetkili olduğun içeriği yayımla. Korsan maç yayını, izinsiz eser kopyası veya kişisel veri içeren belge paylaşma. Kulüp/lig adlarıyla resmî temsil izlenimi yaratma.</p></section>
-  <section><h2>5. Bildir, engelle, itiraz et</h2><p>Uygulamadaki şikâyet ve engelleme araçlarını kullanabilir veya {SUPPORT} adresine yazabilirsin. Bildirimler insan tarafından incelenir; geçici gizleme ihlalin kesinleştiği anlamına gelmez. Karara aynı kanaldan itiraz edebilirsin. 7/24 izleme veya sabit çözüm süresi taahhüt edilmez.</p></section>
+  <section><h2>5. Otomatik uyarı karar değildir</h2><p>Hakaret veya tehdit ihtimali görülen metin gönderilmeden önce düzenlemen için uyarılabilir ve güvenlik sinyali sunucuda kaydedilebilir. Bu filtre bağlamı yanlış anlayabilir; tek başına hesabı kapatmaz veya kesin ihlal kararı oluşturmaz.</p></section>
+  <section><h2>6. Bildir, engelle, itiraz et</h2><p>Uygulamadaki şikâyet ve engelleme araçlarını kullanabilir veya {SUPPORT} adresine yazabilirsin. Şikâyet eden kişi içeriği hemen görmez; yeterli sayıda bağımsız ve güvenilir bildirim içeriği geçici olarak herkesten gizleyebilir. Hesap yaptırımları insan incelemesi ve itiraz kaydıyla değerlendirilir. Geçici gizleme ihlalin kesinleştiği anlamına gelmez. 7/24 izleme veya sabit çözüm süresi taahhüt edilmez.</p></section>
 </>;
 
 const Scoring = () => <>
@@ -67,7 +71,8 @@ const Scoring = () => <>
   <section><h2>3. Sonuç değişiklikleri</h2><p>Sonuç sistemde doğrulandıktan sonra puan eklenir. Ertelenen veya doğrulanmayan maçlar bekler; iptal edilenler hesaba katılmaz. Sağlayıcı sonucu düzeltirse maç yeniden değerlendirilir ve gerekli puan düzeltmesi ilgili hesaplara tutarlı uygulanır.</p></section>
   <section><h2>4. Sıralamalar</h2><p>Genel sıralama toplam puana, eşitlikte tam skor sayısına göre oluşur. Oda sıralaması yalnız odaya katıldıktan sonraki tahminleri ve maç başına ortalamayı esas alabilir; ekrandaki dönem ve kapsam geçerlidir.</p></section>
   <section><h2>5. Ücretsiz oyun</h2><p>Tahminler ücretsizdir. Para yatırma, bahis, nakit kazanç veya para ödülü yoktur. Puanlar parasal hak oluşturmaz.</p></section>
-  <section><h2>6. Hata bildirimi</h2><p>Puan veya sonuç hatasını maç adı ve tarihiyle {SUPPORT} adresine iletebilirsin. Parola, doğrulama kodu veya ilgisiz kişisel veri gönderme.</p></section>
+  <section><h2>6. Düello sonucu</h2><p>Düelloda her kullanıcı seçilen maçlar için kendi kilitli tahminini yapar. Maçlar sonuçlanıp doğrulandığında aynı 3/1/0 puanlama kuralıyla iki tarafın toplamı karşılaştırılır. Tahmin yapılmayan maç puan kazandırmaz; iptal veya doğrulanmamış maç sonuçlanana kadar düello kapanmaz.</p></section>
+  <section><h2>7. Hata bildirimi</h2><p>Puan veya sonuç hatasını maç adı ve tarihiyle {SUPPORT} adresine iletebilirsin. Parola, doğrulama kodu veya ilgisiz kişisel veri gönderme.</p></section>
 </>;
 
 const Cookies = () => <>
@@ -78,7 +83,7 @@ const Cookies = () => <>
 </>;
 
 const AccountDeletion = () => <>
-  <section><h2>Hesabını ve verilerini silme</h2><p>SüperTribün hesabını uygulamanın içinden kalıcı olarak silebilirsin. Bu işlem yalnızca uygulamayı telefondan kaldırmak veya cihazdan çıkış yapmak değildir.</p><ol><li>SüperTribün’de hesabına giriş yap.</li><li><strong>Kariyer → Ayarlar → Hesabımı sil</strong> yolunu aç.</li><li>Silinecek verileri incele, ekrandaki doğrulamayı tamamla ve işlemi onayla.</li></ol></section>
+  <section><h2>Hesabını ve verilerini silme</h2><p>SüperTribün hesabını uygulamanın içinden kalıcı olarak silebilirsin. Bu işlem yalnızca uygulamayı telefondan kaldırmak veya cihazdan çıkış yapmak değildir.</p><ol><li>SüperTribün’de hesabına giriş yap.</li><li><strong>Arena → Menü → Hesabım → Hesabımı sil</strong> yolunu aç.</li><li>Silinecek verileri incele, ekrandaki doğrulamayı tamamla ve işlemi onayla.</li></ol></section>
   <section><h2>Neler silinir?</h2><p>Hesabın; profilin, tahminlerin, puan ve kariyer kayıtların, oda üyeliklerin ve oda içeriklerin, akış yorumların, takip/engel ilişkilerin ve hesabına bağlı destek taleplerin kalıcı silme kapsamındadır. Başka kullanıcıların yasal hakları, güvenlik ve hukuki yükümlülükler için tutulması zorunlu sınırlı kayıtlar varsa bunlar yalnızca gerekli süre boyunca ayrıştırılarak saklanabilir.</p><p>Toplulaştırılmış ve artık hesabınla ilişkilendirilemeyen istatistikler kişisel hesap verisi değildir ve geriye dönük olarak ayrıştırılamayabilir.</p></section>
   <section><h2>Uygulamaya erişemiyorsan</h2><p>Kayıtlı e-posta adresinden <a href="mailto:destek@supertribun.com?subject=S%C3%BCperTrib%C3%BCn%20hesap%20silme%20talebi">destek@supertribun.com</a> adresine “SüperTribün hesap silme talebi” başlığıyla yaz. Parolanı, SMS kodunu, kimlik belgeni veya ödeme bilgini e-postaya ekleme. Hesabın sana ait olduğunu doğrulamak için kayıtlı adrese güvenli bir doğrulama adımı gönderilebilir.</p><p>Güvenlik nedeniyle farklı bir e-posta adresinden gönderilen veya hesabı yeterince doğrulanamayan talepler doğrudan silme işlemine dönüştürülmez.</p></section>
 </>;
@@ -97,7 +102,7 @@ export default function LegalPage({ kind, onOpenPreferences }) {
   useEffect(() => { const original = document.title; document.title = `${title} | SüperTribün`; return () => { document.title = original; }; }, [title]);
   return <main className="legal-page">
     <header><Link className="legal-home" to="/">← SüperTribün’e dön</Link><p className="legal-eyebrow">SÜPERTRİBÜN · RESMÎ METİN</p><h1>{title}</h1></header>
-    {content && <><p className="legal-version">25 Eylül 2026 · Sürüm 2026-09-25-v1 · Yürürlükte</p><aside className="legal-draft"><strong>15+ üyelik.</strong> SüperTribün yalnız 15 yaşını doldurmuş kişilere açıktır.</aside>{content}</>}
+    {content && <><p className="legal-version">4 Ekim 2026 · Sürüm 2026-10-04-v1 · Yürürlükte</p><aside className="legal-draft"><strong>15+ üyelik.</strong> SüperTribün yalnız 15 yaşını doldurmuş kişilere açıktır.</aside>{content}</>}
     <footer className="legal-footer">
       <Link to="/uyelik-kosullari">Üyelik Koşulları</Link><Link to="/gizlilik">Gizlilik ve KVKK</Link><Link to="/topluluk-kurallari">Topluluk Kuralları</Link><Link to="/puanlama-ve-oyun-kurallari">Puan ve Oyun Kuralları</Link><Link to="/cerez-politikasi">Çerez Politikası</Link><Link to="/hesap-silme">Hesap silme</Link><button onClick={onOpenPreferences}>Çerez tercihleri</button><a href="mailto:destek@supertribun.com">destek@supertribun.com</a>
     </footer>

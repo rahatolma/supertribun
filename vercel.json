@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/d/:id", "destination": "/api/duel?id=:id" },
     { "source": "/t/:id", "destination": "/api/share?id=:id" },
     { "source": "/m/:id", "destination": "/api/share?id=:id&kind=match" },
     { "source": "/auth/challenge", "destination": "/index.html" },
