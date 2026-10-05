@@ -7,7 +7,7 @@ const SUPPORT = <a href="mailto:destek@supertribun.com">destek@supertribun.com</
 const Privacy = () => <>
   <section><h2>1. Veri sorumlusu ve kapsam</h2>
     <p>SüperTribün, bireysel geliştirici Güngör Çepni tarafından sunulur. İletişim, bildirim ve KVKK başvuru kanalı {SUPPORT} adresidir.</p>
-    <p>Bu metin mobil uygulamadaki üyelik, profil, maç tahmini, kariyer ve sıralama, düello ve davet bağlantıları, bildirimler, Akış, takip, engelleme, şikâyet, özel oda ve destek işlemleri ile supertribun.com web sitesini kapsar. SüperTribün yalnız 15 yaşını doldurmuş kişilere açıktır; 15 yaş altındaki kişiler hesap oluşturamaz.</p>
+    <p>Bu metin mobil uygulamadaki üyelik, profil, maç tahmini, kariyer ve sıralama, düello ve davet bağlantıları, bildirimler, Akış, takip, engelleme, şikâyet, özel oda ve destek işlemleri ile supertribun.com web sitesini kapsar. SüperTribün yalnız 16 yaşını doldurmuş kişilere açıktır; 16 yaş altındaki kişiler hesap oluşturamaz.</p>
     <p>Bu bir açık rıza metni değildir. Üyelik Koşulları’nı kabul etmek bütün veri işleme faaliyetlerine, pazarlamaya veya gelecekteki yeni amaçlara toplu açık rıza vermek anlamına gelmez.</p>
   </section>
   <section><h2>2. İşlenen veriler ve amaçlar</h2>
@@ -45,7 +45,7 @@ const Privacy = () => <>
 </>;
 
 const Terms = () => <>
-  <section><h2>1. Hizmet ve yaş koşulu</h2><p>SüperTribün, Güngör Çepni tarafından sunulan ücretsiz futbol tahmini ve taraftar topluluğu uygulamasıdır. Yalnız 15 yaşını doldurmuş kişiler hesap açabilir. Kayıtta bu koşulu doğrulaman gerekir; yanlış yaş beyanı veya çocuk güvenliği riski hesabın sınırlandırılmasına ya da kapatılmasına neden olabilir.</p></section>
+  <section><h2>1. Hizmet ve yaş koşulu</h2><p>SüperTribün, Güngör Çepni tarafından sunulan ücretsiz futbol tahmini ve taraftar topluluğu uygulamasıdır. Yalnız 16 yaşını doldurmuş kişiler hesap açabilir. Kayıtta bu koşulu doğrulaman gerekir; yanlış yaş beyanı veya çocuk güvenliği riski hesabın sınırlandırılmasına ya da kapatılmasına neden olabilir.</p></section>
   <section><h2>2. Hesabın</h2><p>Erişebildiğin bir e-posta veya doğrulanmış Google/Apple hesabıyla kayıt ol. Şifreni ve doğrulama kodlarını paylaşma; başkasını taklit etme, hesabını başkasına kullandırma veya sıralamayı etkilemek için çoklu hesap açma.</p></section>
   <section><h2>3. Tahmin ve puan</h2><p>Her maç için tek skor tahmini sunucu tarafından kabul edildiğinde kilitlenir ve değiştirilemez. Tam skor 3, doğru sonuç yönü 1, yanlış sonuç 0 puandır. Normal süre ve duraklama dakikaları esas alınır; uzatma ve penaltılar dahil değildir. Ayrıntılar <Link to="/puanlama-ve-oyun-kurallari">Puan ve Oyun Kuralları</Link>ndadır.</p></section>
   <section><h2>4. Para ve bahis yok</h2><p>Üyelik ve tahmin ücretsizdir. Para yatırma, bahis oynama, nakit kazanç veya maddi ödül yoktur. Puanların parasal değeri bulunmaz, satın alınamaz ve paraya çevrilemez.</p></section>
@@ -102,7 +102,7 @@ export default function LegalPage({ kind, onOpenPreferences }) {
   useEffect(() => { const original = document.title; document.title = `${title} | SüperTribün`; return () => { document.title = original; }; }, [title]);
   return <main className="legal-page">
     <header><Link className="legal-home" to="/">← SüperTribün’e dön</Link><p className="legal-eyebrow">SÜPERTRİBÜN · RESMÎ METİN</p><h1>{title}</h1></header>
-    {content && <><p className="legal-version">4 Ekim 2026 · Sürüm 2026-10-04-v1 · Yürürlükte</p><aside className="legal-draft"><strong>15+ üyelik.</strong> SüperTribün yalnız 15 yaşını doldurmuş kişilere açıktır.</aside>{content}</>}
+    {content && <><p className="legal-version">6 Ekim 2026 · Sürüm 2026-10-06-v1 · Yürürlükte</p><aside className="legal-draft"><strong>16+ üyelik.</strong> SüperTribün yalnız 16 yaşını doldurmuş kişilere açıktır.</aside>{content}</>}
     <footer className="legal-footer">
       <Link to="/uyelik-kosullari">Üyelik Koşulları</Link><Link to="/gizlilik">Gizlilik ve KVKK</Link><Link to="/topluluk-kurallari">Topluluk Kuralları</Link><Link to="/puanlama-ve-oyun-kurallari">Puan ve Oyun Kuralları</Link><Link to="/cerez-politikasi">Çerez Politikası</Link><Link to="/hesap-silme">Hesap silme</Link><button onClick={onOpenPreferences}>Çerez tercihleri</button><a href="mailto:destek@supertribun.com">destek@supertribun.com</a>
     </footer>

@@ -7,15 +7,15 @@ const legal = await readFile(new URL('../src/pages/LegalPage.jsx', import.meta.u
 const landing = await readFile(new URL('../src/pages/Landing.jsx', import.meta.url), 'utf8');
 const vercel = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
 
-test('published legal routes and footer links expose one consistent 15+ release', () => {
+test('published legal routes and footer links expose one consistent 16+ release', () => {
   for (const route of ['/uyelik-kosullari', '/gizlilik', '/topluluk-kurallari', '/puanlama-ve-oyun-kurallari']) {
     assert.ok(app.includes(`path="${route}"`), route);
     assert.ok(legal.includes(`to="${route}"`), route);
     assert.ok(landing.includes(`to="${route}"`), route);
     assert.ok(vercel.rewrites.some(rule => rule.source === route && rule.destination === '/index.html'), route);
   }
-  assert.match(legal, /2026-10-04-v1 · Yürürlükte/);
-  assert.match(legal, /yalnız 15 yaşını doldurmuş/);
+  assert.match(legal, /2026-10-06-v1 · Yürürlükte/);
+  assert.match(legal, /yalnız 16 yaşını doldurmuş/);
   assert.match(legal, /Arkadaşın.*davet|uygulamada olmayan bir arkadaşına/);
   assert.match(legal, /Expo Push Service/);
   assert.match(legal, /tek başına hesabı kapatmaz/);
