@@ -110,10 +110,10 @@ export default function SuperTribunAI({ onOpenPreferences }) {
           <h2 className="section-title">Maçın üç ihtimali<br />tek modelde buluşur.</h2>
         </motion.div>
 
-        <div className="bento-grid">
+        <div className="bento-grid ai-model-grid">
           {/* Card 1 */}
           <motion.div
-            className="bento-card card-light"
+            className="bento-card ai-model-card card-light"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -132,7 +132,7 @@ export default function SuperTribunAI({ onOpenPreferences }) {
 
           {/* Card 2 */}
           <motion.div
-            className="bento-card card-dark"
+            className="bento-card ai-model-card card-dark"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -150,7 +150,7 @@ export default function SuperTribunAI({ onOpenPreferences }) {
 
           {/* Card 3 */}
           <motion.div
-            className="bento-card card-yellow"
+            className="bento-card ai-model-card card-yellow"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
