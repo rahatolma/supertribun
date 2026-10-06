@@ -72,9 +72,15 @@ export default function Landing({ onOpenPreferences }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img src="/phone-2.png" alt="SüperTribün Kariyer" className="phone-mockup-img phone-left" />
-            <img src="/phone-3.png" alt="SüperTribün Arena" className="phone-mockup-img phone-center" />
-            <img src="/phone-1.png" alt="SüperTribün Sıralama" className="phone-mockup-img phone-right" />
+            <div className="phone-mockup phone-left">
+              <img src="/phone-2.png" alt="SüperTribün Kariyer" className="phone-screen-img" />
+            </div>
+            <div className="phone-mockup phone-center">
+              <img src="/phone-3.png" alt="SüperTribün Arena" className="phone-screen-img" />
+            </div>
+            <div className="phone-mockup phone-right">
+              <img src="/phone-1.png" alt="SüperTribün Sıralama" className="phone-screen-img" />
+            </div>
           </motion.div>
         </div>
 

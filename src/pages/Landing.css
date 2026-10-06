@@ -172,14 +172,24 @@
   left: 5%;
 }
 
-.phone-mockup-img {
+.phone-mockup {
   position: absolute;
   width: 320px;
-  height: auto;
-  object-fit: contain;
+  aspect-ratio: 1320 / 2868;
+  overflow: hidden;
+  border: 7px solid #151515;
+  border-radius: 44px;
+  background: #f8f8f6;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.4s, filter 0.4s ease;
   cursor: pointer;
+}
+
+.phone-screen-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* AI Page Mockup */
@@ -452,8 +462,10 @@
     justify-content: center;
   }
   
-  .phone-mockup-img {
+  .phone-mockup {
     width: 160px;
+    border-width: 4px;
+    border-radius: 24px;
   }
 
   .phone-center {
