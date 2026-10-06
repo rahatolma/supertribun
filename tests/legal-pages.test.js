@@ -18,6 +18,8 @@ test('published legal routes and footer links expose one consistent 16+ release'
   assert.match(legal, /yalnız 16 yaşını doldurmuş/);
   assert.match(legal, /Arkadaşın.*davet|uygulamada olmayan bir arkadaşına/);
   assert.match(legal, /Expo Push Service/);
+  assert.match(legal, /Sentry çökme, teknik teşhis ve sınırlı performans izleri/);
+  assert.match(legal, /varsayılan kişisel bilgi gönderimi.*ekran görüntüsü.*görünüm hiyerarşisi toplama kapalıdır/s);
   assert.match(legal, /tek başına hesabı kapatmaz/);
   assert.match(legal, /Arena → Menü → Hesabım → Hesabımı sil/);
   assert.doesNotMatch(legal, /13 yaş|13\+|Yayın öncesi çalışma metni|İnceleme sürümü/);
