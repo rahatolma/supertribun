@@ -597,6 +597,19 @@
 .bento-card.feature-card-primary { grid-column: span 2; }
 .bento-card.feature-card-wide { grid-column: span 3; min-height: 420px; }
 
+@media (min-width: 1181px) {
+  .bento-card.feature-card-primary {
+    height: 540px;
+    min-height: 540px;
+  }
+
+  .ai-model-card .card-visual-circles,
+  .ai-model-card .card-visual-chat,
+  .ai-model-card .card-visual-bars {
+    height: 100px;
+  }
+}
+
 .bento-card {
   border-radius: var(--radius-lg);
   padding: 48px 40px;
@@ -659,29 +672,6 @@
 
 .text-white { color: white; }
 .text-muted { color: #888; }
-
-/* AI motorundaki üç adım, genel altı kolonlu bento şablonunda tek kolona
-   sıkışmamalı. Her kart masaüstünde okunabilir bir tam sütun kullanır. */
-.ai-model-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.ai-model-card {
-  min-height: 640px;
-  padding: 40px 32px;
-}
-
-.ai-model-card .card-tag {
-  margin-bottom: 32px;
-}
-
-.ai-model-card .card-title {
-  font-size: clamp(30px, 2.5vw, 36px);
-}
-
-.ai-model-card .card-desc {
-  max-width: 100%;
-}
 
 /* Abstract visuals for cards */
 .card-visual-circles {
@@ -1055,7 +1045,6 @@
     left: 0;
   }
   .bento-grid { grid-template-columns: 1fr; }
-  .ai-model-card { min-height: 520px; }
   .bento-card.feature-card-primary,
   .bento-card.feature-card-wide { grid-column: 1 / -1; min-height: 430px; }
 }
@@ -1074,7 +1063,6 @@
     top: 70px;
   }
   .bento-grid { grid-template-columns: minmax(0, 1fr); }
-  .ai-model-card { min-height: 500px; }
   .bento-card.feature-card-primary,
   .bento-card.feature-card-wide { grid-column: 1 / -1; min-height: 420px; }
 }

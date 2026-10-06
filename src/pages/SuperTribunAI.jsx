@@ -113,7 +113,7 @@ export default function SuperTribunAI({ onOpenPreferences }) {
         <div className="bento-grid ai-model-grid">
           {/* Card 1 */}
           <motion.div
-            className="bento-card ai-model-card card-light"
+            className="bento-card feature-card-primary ai-model-card card-light"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -132,7 +132,7 @@ export default function SuperTribunAI({ onOpenPreferences }) {
 
           {/* Card 2 */}
           <motion.div
-            className="bento-card ai-model-card card-dark"
+            className="bento-card feature-card-primary ai-model-card card-dark"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -150,7 +150,7 @@ export default function SuperTribunAI({ onOpenPreferences }) {
 
           {/* Card 3 */}
           <motion.div
-            className="bento-card ai-model-card card-yellow"
+            className="bento-card feature-card-primary ai-model-card card-yellow"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}

@@ -173,8 +173,9 @@ export default function Landing({ onOpenPreferences }) {
             <p className="card-desc text-muted">Arkadaşlarınla odanı kur, aynı maçlarda tahmin yap ve oda sıralamasında rekabet et.</p>
             <div className="card-visual-room" aria-hidden="true">
               <div className="room-member">G</div>
-              <div className="room-member is-accent">M</div>
-              <div className="room-member">E</div>
+              <div className="room-member is-accent">N</div>
+              <div className="room-member">M</div>
+              <div className="room-member is-accent">S</div>
               <div className="room-score"><strong>12</strong><span>oda puanı</span></div>
             </div>
           </motion.div>
