@@ -125,7 +125,7 @@ export default function Landing({ onOpenPreferences }) {
             </div>
           </motion.div>
 
-          {/* Card 2: Akış */}
+          {/* Card 2: Düello */}
           <motion.div
             className="bento-card feature-card-primary card-dark"
             initial={{ opacity: 0, y: 30 }}
@@ -133,16 +133,46 @@ export default function Landing({ onOpenPreferences }) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="card-tag text-accent">02 / AKIŞ</div>
-            <h3 className="card-title text-white">Maçın<br />muhabbetini<br />yap.</h3>
-            <p className="card-desc text-muted">Fikrini paylaş, yorumlara katıl ve odalarda kendi tribününü kur. Maçın sesi skorla bitmez.</p>
-            <div className="card-visual-chat">
-              <div className="chat-bubble"></div>
-              <div className="chat-bubble right"></div>
+            <div className="card-tag text-accent">02 / DÜELLO</div>
+            <h3 className="card-title text-white">Meydan<br />okuma<br />burada.</h3>
+            <p className="card-desc text-muted">Bir ila beş maç seç, rakibini çağır ve kilitli tahminlerinle düelloya çık. Skorlar maç başlayana kadar gizli kalır.</p>
+            <Swords className="card-visual-duel" aria-hidden="true" />
+          </motion.div>
+
+          {/* Card 3: Akış */}
+          <motion.div
+            className="bento-card feature-card-primary card-dark"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="card-tag text-accent">03 / AKIŞ</div>
+            <h3 className="card-title text-white">Maçın muhabbetini yap.</h3>
+            <p className="card-desc text-muted">Maçını bul, fikrini paylaş; takip ettiğin taraftarların yorumlarını aynı akışta gör.</p>
+            <div className="card-visual-chat" aria-hidden="true"><span></span><span></span><span></span></div>
+          </motion.div>
+
+          {/* Card 4: Odalar */}
+          <motion.div
+            className="bento-card feature-card-primary card-room"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className="card-tag text-accent">04 / ODALAR</div>
+            <h3 className="card-title text-white">Kendi tribününü kur.</h3>
+            <p className="card-desc text-muted">Arkadaşlarını aynı odaya çağır; aynı maçlarda tahmin yapın ve kendi sıralamanızı oluşturun.</p>
+            <div className="card-visual-room card-visual-room-compact" aria-hidden="true">
+              <div className="room-member">G</div>
+              <div className="room-member is-accent">N</div>
+              <div className="room-member">M</div>
+              <div className="room-member is-accent">S</div>
             </div>
           </motion.div>
 
-          {/* Card 3: Sıralama */}
+          {/* Card 5: Sıralama */}
           <motion.div
             className="bento-card feature-card-primary card-yellow"
             initial={{ opacity: 0, y: 30 }}
@@ -150,45 +180,25 @@ export default function Landing({ onOpenPreferences }) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="card-tag">03 / SIRALAMA</div>
-            <h3 className="card-title">Sözün kayda<br />geçsin.</h3>
-            <p className="card-desc">Sonucu ve tam skoru bildiğin maçları gör. Kullanıcıları, odaları; topluluk, veri modeli, oranlar ve SüperTribün AI ile karşılaştır.</p>
-            <div className="card-visual-bars">
+            <div className="card-tag">05 / SIRALAMA</div>
+            <h3 className="card-title">Sözün kayda geçsin.</h3>
+            <p className="card-desc">Güven yüzdesine göre taraftarları karşılaştır; puanını, isabetini ve tam skorlarını aynı standartta takip et.</p>
+            <div className="card-visual-bars" aria-hidden="true">
               <div className="bar bar-1"></div>
               <div className="bar bar-2"></div>
               <div className="bar bar-3"></div>
             </div>
           </motion.div>
 
-          {/* Card 4: Odalar */}
+          {/* Card 6: Kariyer */}
           <motion.div
-            className="bento-card feature-card-wide card-room"
+            className="bento-card feature-card-primary card-career"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="card-tag text-accent">04 / ODALAR</div>
-            <h3 className="card-title text-white">Kendi tribününü kur.</h3>
-            <p className="card-desc text-muted">Arkadaşlarınla odanı kur, aynı maçlarda tahmin yap ve oda sıralamasında rekabet et.</p>
-            <div className="card-visual-room" aria-hidden="true">
-              <div className="room-member">G</div>
-              <div className="room-member is-accent">N</div>
-              <div className="room-member">M</div>
-              <div className="room-member is-accent">S</div>
-              <div className="room-score"><strong>12</strong><span>oda puanı</span></div>
-            </div>
-          </motion.div>
-
-          {/* Card 5: Kariyer */}
-          <motion.div
-            className="bento-card feature-card-wide card-career"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="card-tag">05 / KARİYER</div>
+            <div className="card-tag">06 / KARİYER</div>
             <h3 className="card-title">Sözünün geçmişini gör.</h3>
             <p className="card-desc">Bekleyen ve sonuçlanan tahminlerini takip et. Kariyer adımlarını tamamla, rozetlerini aç ve gelişimini tek yerde gör.</p>
             <div className="card-visual-career" aria-hidden="true">

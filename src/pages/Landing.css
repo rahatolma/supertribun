@@ -716,6 +716,14 @@
   gap: 16px;
 }
 
+.card-visual-duel {
+  width: 112px;
+  height: 112px;
+  margin-top: auto;
+  color: var(--color-accent);
+  stroke-width: 1.4;
+}
+
 .chat-bubble {
   height: 48px;
   background-color: #222;
@@ -754,6 +762,18 @@
   align-items: center;
   margin-top: auto;
   min-height: 126px;
+}
+
+.card-visual-room-compact {
+  min-height: 104px;
+}
+
+.card-visual-room-compact .room-member {
+  width: 58px;
+  height: 58px;
+  border-width: 4px;
+  border-color: #fff2cd;
+  font-size: 17px;
 }
 
 .room-member {

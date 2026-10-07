@@ -24,4 +24,5 @@ test('Vercel and mobile association files expose the duel route',async()=>{
   const root=new URL('../',import.meta.url);
   const [vercel,page,aasa,assetlinks]=await Promise.all(['vercel.json','api/duel.js','public/.well-known/apple-app-site-association','public/.well-known/assetlinks.json'].map(file=>readFile(new URL(file,root),'utf8')));
   assert.match(vercel,/"\/d\/:id"/);assert.match(page,/com\.supertribun\.app:\/\/d\//);assert.match(page,/yalnız bir kez kullanılabilir/);assert.match(page,/rehberini veya arkadaşının e-posta adresini toplamaz/);assert.match(aasa,/"\/d\/\*"/);assert.match(assetlinks,/com\.supertribun\.app/);
+  assert.match(page,/https:\/\/www\.supertribun\.com\/d\//);
 });

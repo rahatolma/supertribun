@@ -9,7 +9,7 @@ export default async function handler(request,response){
     const data=await fetchDuelInvite(id),available=data.status==='pending';
     const statusCopy={claimed:'Bu davet daha önce kullanılmış.',cancelled:'Bu davet gönderen tarafından iptal edilmiş.',expired:'Bu davetin süresi dolmuş.'}[data.status]||'';
     const matches=data.matches.map(match=>`<li><span><strong>${escape(match.home)} – ${escape(match.away)}</strong><small>${escape(match.league)} · ${escape(trDate(match.kickoff_at))}</small></span></li>`).join('');
-    const canonical=`https://supertribun.com/d/${id}`;
+    const canonical=`https://www.supertribun.com/d/${id}`;
     response.setHeader('Content-Type','text/html; charset=utf-8');
     response.setHeader('Cache-Control','private, no-store, max-age=0');
     response.status(200).send(`<!doctype html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(data.challenger_name)} seni düelloya çağırdı · SüperTribün</title><meta name="description" content="${escape(data.challenger_name)} ile ${data.matches.length} maçlık SüperTribün düellosuna katıl."><link rel="canonical" href="${canonical}"><meta property="og:type" content="website"><meta property="og:site_name" content="SüperTribün"><meta property="og:title" content="${escape(data.challenger_name)} seni düelloya çağırdı"><meta property="og:description" content="${data.matches.length} maçlık meydan okumayı gör ve tahminlerini kilitle."><meta property="og:url" content="${canonical}"><meta property="og:image" content="https://www.supertribun.com/og-image.jpg"><link rel="icon" href="/favicon.png"><style>
