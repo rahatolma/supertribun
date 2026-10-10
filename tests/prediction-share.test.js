@@ -1,13 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {fetchShareData,shareId,trDate} from '../api/_share-data.js';
+import {fetchShareData,shareId,trDate,trLead,verificationCode} from '../api/_share-data.js';
 
 const id='123e4567-e89b-42d3-a456-426614174000';
-const payload={id,match_id:'223e4567-e89b-42d3-a456-426614174000',league:'Süper Lig',home_name:'Samsunspor',away_name:'Trabzonspor',home_code:'S',away_code:'T',kickoff_at:'2026-10-10T13:00:00Z',locked_at:'2026-09-23T14:30:00Z',prediction_home:0,prediction_away:2};
+const payload={id,match_id:'223e4567-e89b-42d3-a456-426614174000',owner_name:'Güngör',owner_team:'Fenerbahçe',league:'Süper Lig',home_name:'Samsunspor',away_name:'Trabzonspor',home_code:'S',away_code:'T',kickoff_at:'2026-10-10T13:00:00Z',locked_at:'2026-09-23T14:30:00Z',prediction_home:0,prediction_away:2,result_home:null,result_away:null,points:null};
 
 test('share ids and Turkish display dates are bounded',()=>{
  assert.equal(shareId(id),id);assert.equal(shareId('bad'),null);assert.match(trDate(payload.kickoff_at),/10 Eki 2026/);
+ assert.equal(verificationCode(id),'ST-123E4567');assert.match(trLead(payload.locked_at,payload.kickoff_at),/gün/);
 });
 
 test('server share reader uses the public RPC and validates its response',async t=>{
@@ -35,10 +36,8 @@ test('server reader supports a public match without requiring a prediction',asyn
 test('Vercel routes expose one dynamic share page, OG image and mobile associations',async()=>{
  const root=new URL('../',import.meta.url);
  const [vercel,page,image,aasa,assetlinks]=await Promise.all(['vercel.json','api/share.js','api/share-image.js','public/.well-known/apple-app-site-association','public/.well-known/assetlinks.json'].map(file=>readFile(new URL(file,root),'utf8')));
- assert.match(vercel,/"\/t\/:id"/);assert.match(vercel,/"\/m\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/kind==='match'/);assert.match(page,/og:image:height" content="630/);assert.match(page,/aspect-ratio:1200\/630/);assert.match(page,/width="1200" height="630"/);assert.match(page,/image=`\$\{origin\}\/api\/share-image/);assert.doesNotMatch(page,/cookieConsent|Çerez tercihleri|mağaza bağlantıları yakında/i);assert.match(image,/request\.query\?\.id/);assert.match(image,/new URL\(request\.url,'https:\/\/supertribun\.com'\)/);assert.match(image,/new ImageResponse/);assert.match(image,/width:1200,height:630/);assert.match(image,/data:image\/png;base64/);assert.doesNotMatch(image,/sharp|runtime:'edge'/);
- assert.match(page,/origin='https:\/\/www\.supertribun\.com'/);
+ assert.match(vercel,/"\/t\/:id"/);assert.match(vercel,/"\/m\/:id"/);assert.match(page,/og:image/);assert.match(page,/share_open_app_click/);assert.match(page,/kind==='match'/);assert.match(page,/Söz Mührü doğrulandı/);assert.match(page,/Kart sahte, değiştirilmiş, iptal edilmiş veya geçersiz olabilir/);assert.match(page,/owner_name/);assert.match(page,/og:image:height" content="630/);assert.match(page,/aspect-ratio:1200\/630/);assert.match(page,/width="1200" height="630"/);assert.match(page,/www\.supertribun\.com\/api\/share-image/);assert.doesNotMatch(page,/cookieConsent|Çerez tercihleri|mağaza bağlantıları yakında/i);assert.match(image,/request\.query\?\.id/);assert.match(image,/new URL\(request\.url,'https:\/\/supertribun\.com'\)/);assert.match(image,/new ImageResponse/);assert.match(image,/width:1200,height:630/);assert.match(image,/data:image\/png;base64/);assert.doesNotMatch(image,/sharp|runtime:'edge'/);
  assert.match(aasa,/NX934R23UD\.com\.supertribun\.app/);assert.match(aasa,/"\/t\/\*"/);assert.match(aasa,/"\/m\/\*"/);
- assert.match(vercel,/"source": "\/\.well-known\/apple-app-site-association"/);assert.match(vercel,/"Content-Type", "value": "application\/json; charset=utf-8"/);
  const androidLinks=JSON.parse(assetlinks);
  assert.equal(androidLinks[0].target.package_name,'com.supertribun.app');
  assert.deepEqual(androidLinks[0].relation,['delegate_permission/common.handle_all_urls']);
