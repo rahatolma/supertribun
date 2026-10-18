@@ -2,8 +2,14 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["NX934R23UD.com.supertribun.app"],
+        "appIDs": [
+          "NX934R23UD.com.supertribun.app"
+        ],
         "components": [
+          {
+            "/": "/r/*",
+            "comment": "SuperTribun room invitations; explicit acceptance required"
+          },
           {
             "/": "/d/*",
             "comment": "SüperTribün single-use duel invitation links"
