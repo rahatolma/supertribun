@@ -172,18 +172,24 @@ function card(data,logo,kind){
         h('div',{style:{fontSize:22,fontWeight:900,color:'#A86F00'}},'Hadi, sen de tahminini yap ›'))));
 }
 
-export default async function handler(request){
+export default async function handler(request,response){
+  const deliver=async value=>{
+    if(!response)return value;
+    response.statusCode=value.status;
+    for(const [name,headerValue]of value.headers)response.setHeader(name,headerValue);
+    response.end(Buffer.from(await value.arrayBuffer()));
+  };
   try{
     const id=shareId(request.query?.id??new URL(request.url,'https://supertribun.com').searchParams.get('id'));
-    if(!id)return new Response('Not found',{status:404});
+    if(!id)return await deliver(new Response('Not found',{status:404,headers:{'Cache-Control':'no-store'}}));
     const kind=request.query?.kind==='match'?'match':'prediction';
     const [data,logo]=await Promise.all([fetchShareData(id,kind,shareNetwork(request)),logoPromise]);
     const png=await renderCardPng(card(data,logo,kind));
     const image=new Response(png,{headers:{'Content-Type':'image/png'}});
     image.headers.set('Cache-Control',kind==='prediction'?'no-store':'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800');
-    return image;
+    return await deliver(image);
   }catch(error){
     console.error('share-image',error instanceof Error?error.name:'PreviewError');
-    return new Response('Preview unavailable',{status:502,headers:{'Cache-Control':'no-store'}});
+    return await deliver(new Response('Preview unavailable',{status:502,headers:{'Cache-Control':'no-store'}}));
   }
 }
