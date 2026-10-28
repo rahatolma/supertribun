@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import React from 'react';
 import { ImageResponse } from '@vercel/og';
-import { fetchShareData, shareId, trDate } from './_share-data.js';
+import { fetchShareData, shareId, shareNetwork, trDate } from './_share-data.js';
 
 const h=React.createElement;
 const fallback={background:'#F2EEE8',accent:'#9B948B'};
@@ -53,10 +53,10 @@ export default async function handler(request){
     const id=shareId(request.query?.id??new URL(request.url,'https://supertribun.com').searchParams.get('id'));
     if(!id)return new Response('Not found',{status:404});
     const kind=request.query?.kind==='match'?'match':'prediction';
-    const [data,logo]=await Promise.all([fetchShareData(id,kind),logoPromise]);
-    return new ImageResponse(card(data,logo,kind),{width:1200,height:630,headers:{'Cache-Control':'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800'}});
+    const [data,logo]=await Promise.all([fetchShareData(id,kind,shareNetwork(request)),logoPromise]);
+    return new ImageResponse(card(data,logo,kind),{width:1200,height:630,headers:{'Cache-Control':kind==='prediction'?'no-store':'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800'}});
   }catch(error){
     console.error('share-image',error);
-    return new Response('Preview unavailable',{status:502});
+    return new Response('Preview unavailable',{status:502,headers:{'Cache-Control':'no-store'}});
   }
 }

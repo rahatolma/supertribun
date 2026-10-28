@@ -1,4 +1,4 @@
-import { fetchShareData, shareId, trDate, trLead, verificationCode } from './_share-data.js';
+import { fetchShareData, shareId, shareNetwork, trDate, trLead, verificationCode } from './_share-data.js';
 
 const escape=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const scriptSafe=value=>JSON.stringify(value).replace(/</g,'\\u003c');
@@ -6,7 +6,7 @@ const shell=(title,body,meta='')=>`<!doctype html><html lang="tr"><head><meta ch
 *{box-sizing:border-box}body{margin:0;background:#f7f4ef;color:#181716;font-family:Inter,system-ui,-apple-system,sans-serif}.page{min-height:100vh;display:grid;place-items:center;padding:24px 18px 40px}.wrap{width:min(620px,100%)}.brand{display:block;width:190px;height:auto;margin:0 auto 18px}.card{display:block;width:100%;aspect-ratio:1200/630;object-fit:cover;border-radius:24px;border:1px solid #d8d1c8}.certificate{background:#fff;border:1px solid #b7d9c7;border-radius:24px;padding:28px;box-shadow:0 20px 60px #35280f12}.state{text-align:center}.mark{width:62px;height:62px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#e8f5ed;color:#16804a;font-size:36px;font-weight:900}.kicker{margin-top:14px;color:#16804a;font-size:12px;font-weight:900;letter-spacing:1.6px}.title{margin:5px 0 0;font-size:30px;line-height:1.12}.copy{color:#655b50;font-size:14px;line-height:1.55;margin:10px auto 22px;max-width:470px}.owner{padding:16px;border-radius:15px;background:#f1f8f4;margin-bottom:8px}.label{font-size:10px;font-weight:900;letter-spacing:1.2px;color:#16804a}.owner strong{display:block;font-size:22px;margin-top:4px}.team{font-size:13px;color:#655b50;margin-top:2px}.row{display:grid;grid-template-columns:145px 1fr;gap:16px;padding:13px 2px;border-bottom:1px solid #e5ddd2}.row span{font-size:12px;font-weight:800;color:#8a837b}.row b{font-size:15px;overflow-wrap:anywhere}.row .score{font-size:25px;color:#9b6900}.row .points{color:#16804a}.seal{border:1px solid #181716;border-radius:14px;padding:14px;margin-top:18px}.seal b{display:block;font-size:19px;letter-spacing:1px;margin-top:3px}.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}.button{display:inline-flex;min-height:50px;align-items:center;justify-content:center;padding:12px 20px;border-radius:13px;background:#f2ae18;color:#181716;text-decoration:none;font-weight:900}.button.secondary{background:#fff;border:1px solid #d8d1c8;color:#855800}.warning{border-color:#f0adb2;background:#fff7f7;text-align:center;padding:46px 28px}.warning .mark{background:#fdebed;color:#b4212b}.warning .kicker,.warning .title{color:#b4212b}.foot{text-align:center;margin-top:16px;font-size:12px}.foot a{color:#8a837b}@media(max-width:600px){.page{padding-top:18px}.certificate{padding:22px 18px;border-radius:20px}.title{font-size:26px}.row{grid-template-columns:1fr;gap:4px}.brand{width:170px}}
 </style></head><body><main class="page"><div class="wrap"><img class="brand" src="/logo.png" alt="SüperTribün">${body}<p class="foot"><a href="/gizlilik">Gizlilik</a></p></div></main></body></html>`;
 
-function invalidPage(code){return shell('Mühür doğrulanamadı',`<section class="certificate warning"><div class="mark">!</div><div class="kicker">SÜPERTRİBÜN SÖZ MÜHRÜ</div><h1 class="title">Bu mühür doğrulanamadı.</h1><p class="copy">Kart sahte, değiştirilmiş, iptal edilmiş veya geçersiz olabilir. Bu görsele güvenme.</p>${code?`<div class="seal"><span class="label">KONTROL EDİLEN MÜHÜR</span><b>${escape(code)}</b></div>`:''}<div class="actions"><a class="button secondary" href="/">SüperTribün'ü keşfet</a></div></section>`);}
+function invalidPage(code){return shell('Mühür doğrulanamadı',`<section class="certificate warning"><div class="mark">!</div><div class="kicker">SÜPERTRİBÜN SÖZ MÜHRÜ</div><h1 class="title">Bu mühür doğrulanamadı.</h1><p class="copy">Kayıt şu anda doğrulanamadı. Bağlantı veya servis sorunu ya da geçersiz/süresi dolmuş bir bağlantı nedeniyle olabilir. Tekrar kontrol etmeden bu paylaşımı doğrulanmış sayma.</p>${code?`<div class="seal"><span class="label">KONTROL EDİLEN MÜHÜR</span><b>${escape(code)}</b></div>`:''}<div class="actions"><a class="button secondary" href="/">SüperTribün'ü keşfet</a></div></section>`);}
 
 function verifiedPage(id,data){
  const canonical=`https://www.supertribun.com/t/${id}`,image=`https://www.supertribun.com/api/share-image?id=${id}&kind=prediction&v=8`,title=`${data.home_name} – ${data.away_name}`,description=`${data.owner_name} kullanıcısının doğrulanmış kilitli tahmini.`;
@@ -24,13 +24,14 @@ function matchPage(id,data){
 
 export default async function handler(request,response){
  const raw=typeof request.query.id==='string'?request.query.id:'',id=shareId(raw),kind=request.query.kind==='match'?'match':'prediction';
+ if(kind==='prediction')response.setHeader('Cache-Control','no-store');
  if(!id){response.setHeader('Content-Type','text/html; charset=utf-8');return response.status(404).send(kind==='prediction'?invalidPage(null):'Paylaşım bulunamadı.');}
  try{
-  const data=await fetchShareData(id,kind);
-  response.setHeader('Content-Type','text/html; charset=utf-8');response.setHeader('Cache-Control','public, max-age=60, s-maxage=300, stale-while-revalidate=3600');
+  const data=await fetchShareData(id,kind,shareNetwork(request));
+  response.setHeader('Content-Type','text/html; charset=utf-8');response.setHeader('Cache-Control',kind==='prediction'?'no-store':'public, max-age=60, s-maxage=300, stale-while-revalidate=3600');
   return response.status(200).send(kind==='prediction'?verifiedPage(id,data):matchPage(id,data));
  }catch(error){
-  const unavailable=String(error?.message||'').includes('SHARE_CONFIG');response.setHeader('Content-Type','text/html; charset=utf-8');response.setHeader('Cache-Control','no-store');
+  const unavailable=kind==='match'?String(error?.message||'').includes('SHARE_CONFIG'):String(error?.message||'')!=='SHARE_UPSTREAM_404';response.setHeader('Content-Type','text/html; charset=utf-8');response.setHeader('Cache-Control','no-store');
   return response.status(unavailable?503:404).send(kind==='prediction'?invalidPage(verificationCode(id)):'Bu paylaşım şu anda görüntülenemiyor.');
  }
 }
